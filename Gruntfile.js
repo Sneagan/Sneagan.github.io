@@ -1,22 +1,13 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
-      options: {
-        separator: ';'
-      },
-      dist: {
-        src: ['source/**/*.js'],
-        dest: 'public/js/honda_developer_studio.js'
-      }
-    },
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       dist: {
         files: {
-          'public/js/honda_developer_studio.min.js': ['<%= concat.dist.dest %>']
+          'public/js/honda_developer_studio.min.js': ['public/js/honda_developer_studio.js']
         }
       }
     },
@@ -62,17 +53,25 @@ module.exports = function(grunt) {
           {expand: true, src: ['source/assets/**'], dest: 'public/assets/'},
         ]
       }
+    },
+    browserify: {
+      dist: {
+        files: {
+          'public/js/honda_developer_studio.js': ['source/js/**/*.js'],
+        },
+        options: {}
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
 
   grunt.registerTask('test', ['sass', 'jshint']);
-  grunt.registerTask('compile', ['jshint', 'concat', 'uglify', 'sass', 'copy']);
+  grunt.registerTask('compile', ['jshint', 'browserify', 'sass', 'copy']);
 
 };
