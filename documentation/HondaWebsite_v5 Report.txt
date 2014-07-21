@@ -1,0 +1,107 @@
+Package Report
+
+-----------------------------------------------------------------------------
+Document:
+Name: HondaWebsite_v5.ai
+Color Mode: RGB color
+Color Profile: sRGB IEC61966-2.1
+Ruler Units: pixels
+Artboard Dimensions: 1024 px x 4580.8486 px
+Show Images in Outline Mode: OFF
+Highlight Substituted Fonts: OFF
+Highlight Substituted Glyphs: OFF
+Preserve Text Editability
+Simulate Colored Paper: OFF
+
+-----------------------------------------------------------------------------
+Spot Color Objects:
+
+-----------------------------------------------------------------------------
+Missing Fonts:NONE
+
+-----------------------------------------------------------------------------
+Protected Fonts that were not packaged:
+InterFace (Typekit Fonts)
+InterFace Italic (Typekit Fonts)
+InterFace Bold (Typekit Fonts)
+InterFace Bold Italic (Typekit Fonts)
+
+-----------------------------------------------------------------------------
+Fonts:
+Interstate-Light (Type 1)
+Interstate-Bold (Type 1)
+Omnes Light Roman (OTF)
+Omnes Semibold Roman (OTF)
+
+-----------------------------------------------------------------------------
+Embedded Fonts:
+NONE
+
+-----------------------------------------------------------------------------
+Missing Links:
+NONE
+
+-----------------------------------------------------------------------------
+Linked Images:
+
+/Users/sarahthomas/Desktop/apple-carplay-logo.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 96K, 170 by 146 pixels
+Dimensions: 163.207 by 140.166 points 
+Resolution: 74.997 by 74.997 pixels per inch
+
+
+/Users/sarahthomas/Desktop/OAA-Google-Aims-to-Bring-Android-to-Cars.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 236K, 404 by 200 pixels
+Dimensions: 220.18 by 109 points 
+Resolution: 132.11 by 132.11 pixels per inch
+
+
+/Users/sarahthomas/Desktop/Apple_Developer_(logo).png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 13K, 131 by 27 pixels
+Dimensions: 131 by 27 points 
+Resolution: 72 by 72 pixels per inch
+
+
+/Users/sarahthomas/Desktop/Google-Developers-Logo.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 69K, 180 by 99 pixels
+Dimensions: 168.078 by 92.443 points 
+Resolution: 77.107 by 77.107 pixels per inch
+
+
+/Users/sarahthomas/Desktop/Android-Auto-will-be-initially-supported-in-vehicles-from-28-car-brands.png
+Type: Transparent Grayscale
+Bits per Pixel: 16
+Channels: 2
+Size: 43K, 150 by 150 pixels
+Dimensions: 149.981 by 149.981 points 
+Resolution: 72.009 by 72.009 pixels per inch
+
+
+/Users/sarahthomas/Documents/HondaR&D/05_Assets/IMG_5636_2-Edited.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 7810K, 2000 by 1333 pixels
+Dimensions: 1040.697 by 693.624 points 
+Resolution: 138.369 by 138.369 pixels per inch
+
+
+/Users/sarahthomas/Documents/HondaR&D/05_Assets/Soichiro-honda_1966_Yoshio Nakamura (1) copy
+Type: CMYK
+Bits per Pixel: 32
+Channels: 4
+Size: 5592K, 1200 by 1193 pixels
+Dimensions: 1352.895 by 1345.003 points 
+Resolution: 63.863 by 63.863 pixels per inch
