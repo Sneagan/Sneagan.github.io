@@ -1,0 +1,4 @@
+body {
+  width: 100%; }
+  body > header, body > section {
+    width: 100%; }

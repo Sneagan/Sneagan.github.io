@@ -39,9 +39,9 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'source/sass',
+          cwd: 'source/sass/',
           src: ['*.scss'],
-          dest: '../public/styles/',
+          dest: 'public/styles/',
           ext: '.css'
         }]
       }
@@ -50,8 +50,18 @@ module.exports = function(grunt) {
       main: {
         files: [
           // includes files within path and its sub-directories
-          {expand: true, src: ['source/assets/**'], dest: 'public/assets/'},
+          {
+            expand: true,
+            cwd: 'source/assets/',
+            src: ['./**'],
+            dest: 'public/assets/'
+          }
         ]
+      }
+    },
+    clean: {
+      build: {
+        src: ['public/assets/**']
       }
     },
     browserify: {
@@ -71,7 +81,7 @@ module.exports = function(grunt) {
           pretty: true
         },
         files: {
-          "public/index.html": ["source/*.jade"]
+          'public/index.html': ['source/*.jade']
         }
       }
     }
@@ -84,8 +94,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('test', ['jshint']);
-  grunt.registerTask('compile', ['jshint', 'browserify', 'sass', 'copy', 'jade']);
+  grunt.registerTask('compile', ['jshint', 'browserify', 'uglify', 'sass', 'clean', 'copy', 'jade']);
 
 };

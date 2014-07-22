@@ -1,3 +1,7 @@
 body {
   width: 100%;
+  & > header,
+  & > section {
+    width: 100%;
+  }
 }
