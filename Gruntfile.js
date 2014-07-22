@@ -61,6 +61,19 @@ module.exports = function(grunt) {
         },
         options: {}
       }
+    },
+    jade: {
+      compile: {
+        options: {
+          data: {
+            debug: false
+          },
+          pretty: true
+        },
+        files: {
+          "public/index.html": ["source/*.jade"]
+        }
+      }
     }
   });
 
@@ -70,8 +83,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-jade');
 
-  grunt.registerTask('test', ['sass', 'jshint']);
-  grunt.registerTask('compile', ['jshint', 'browserify', 'sass', 'copy']);
+  grunt.registerTask('test', ['jshint']);
+  grunt.registerTask('compile', ['jshint', 'browserify', 'sass', 'copy', 'jade']);
 
 };
