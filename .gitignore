@@ -21,3 +21,4 @@ Temporary Items
 
 # Development
 node_modules/
+.sass-cache/

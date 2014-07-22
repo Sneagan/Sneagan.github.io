@@ -4,51 +4,129 @@ html
     title Honda Developer Studio
     meta(http-equiv='Content-type' content='text/html; charset=UTF-8')
   body
-    form(action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8' method='POST')
-      input(type='hidden' name='oid' value='00Di0000000ZD0f')
-      input(type='hidden' name='retURL' value='http://')
+    header
+      ul
+        li.navigation About
+        li.navigation Sign Up
+        li.navigation Partners
+        li.navigation Test Vehicles
 
-      label(for='first_name') First Name
-      input(id='first_name' maxlength='40' name='first_name' size='20' type='text')
+    section.hero
+      div.hero-one
+        div.text
+          p Your Inspiration Meets Honda Innovation
+          p If you're ready to revolutionize the Honda driving experience you've come to the right place.
+        img(src='assets/image.jpg')
 
-      label(for='last_name') Last Name
-      input(id='last_name' maxlength='80' name='last_name' size='20' type='text')
+    section.about
+      h1 About Honda Developer Studio
+      div.animated-divider
+        img(src='assets/something-animatable.jpg')
+      p 
+        | The Honda Developer Studio launched in 2014 in partnership with 
+        a(src='http://google.com') Honda Silicon Valley Labs
+        |  (HSVL). This inaugural program is an initiative, resource center, and information portal for developers and entrepreneurs. We encourage you to sign up to keep tabs on the latest happenings with The Honda Developer Studio as we continue to expand.
+      div.animated-divider
+        img(src='assets/something-animatable.jpg')
 
-      label(for='email') Email
-      input(id='email' maxlength='80' name='email' size='20' type='text')
+    section.sign-up
+      h1 Sign Up to Stay Updated
+      p This exciting initiative with independent developers, partners, and entrepreneurs is just getting started. Sign up now to stay up to date with the latest happenings, plus get first access to Honda developer news and releases.
+    
+      form(action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8' method='POST')
+        input(type='hidden' name='oid' value='00Di0000000ZD0f')
+        input(type='hidden' name='retURL' value='http://')
 
-      label(for='company') Company
-      input(id='company' maxlength='40' name='company' size='20' type='text')
+        label(for='first_name') First Name
+        input(id='first_name' maxlength='40' name='first_name' size='20' type='text')
 
-      label(for='city') City
-      input(id='city' maxlength='40' name='city' size='20' type='text')
+        label(for='last_name') Last Name
+        input(id='last_name' maxlength='80' name='last_name' size='20' type='text')
 
-      label(for='state') State/Province
-      input(id='state' maxlength='20' name='state' size='20' type='text')
+        label(for='email') Email
+        input(id='email' maxlength='80' name='email' size='20' type='text')
 
-      label(for='emailOptOut') Email Opt Out
-      input(id='emailOptOut' name='emailOptOut' type='checkbox' value='1')
+        label(for='company') Company
+        input(id='company' maxlength='40' name='company' size='20' type='text')
 
-      label(for='Campaign_ID') Campaign
-      select(id='Campaign_ID' name='Campaign_ID')
-        option(value='') --None--
+        label(for='city') City
+        input(id='city' maxlength='40' name='city' size='20' type='text')
 
-      label(for='lead_source') Lead Source
-      select(id='lead_source' name='lead_source')
-        option(value='') --None--
-        option(value='Advertisement') Advertisement
-        option(value='Employee Referral') Employee Referral
-        option(value='External Referral') External Referral
-        option(value='Partner') Partner
-        option(value='Public Relations') Public Relations
-        option(value='Seminar - Internal') Seminar - Internal
-        option(value='Seminar - Partner') Seminar - Partner
-        option(value='Trade Show') Trade Show
-        option(value='Web') Web
-        option(value='Word of mouth') Word of mouth
-        option(value='Other') Other
-        option(value='Phone Inquiry') Phone Inquiry
-        option(value='Partner Referral') Partner Referral
-        option(value='Purchased List') Purchased List
+        label(for='state') State/Province
+        input(id='state' maxlength='20' name='state' size='20' type='text')
 
-      input(type='submit' name='submit')
+        label(for='emailOptOut') Email Opt Out
+        input(id='emailOptOut' name='emailOptOut' type='checkbox' value='1')
+
+        label(for='Campaign_ID') Campaign
+        select(id='Campaign_ID' name='Campaign_ID')
+          option(value='') --None--
+
+        label(for='lead_source') Lead Source
+        select(id='lead_source' name='lead_source')
+          option(value='') --None--
+          option(value='Advertisement') Advertisement
+          option(value='Employee Referral') Employee Referral
+          option(value='External Referral') External Referral
+          option(value='Partner') Partner
+          option(value='Public Relations') Public Relations
+          option(value='Seminar - Internal') Seminar - Internal
+          option(value='Seminar - Partner') Seminar - Partner
+          option(value='Trade Show') Trade Show
+          option(value='Web') Web
+          option(value='Word of mouth') Word of mouth
+          option(value='Other') Other
+          option(value='Phone Inquiry') Phone Inquiry
+          option(value='Partner Referral') Partner Referral
+          option(value='Purchased List') Purchased List
+
+        input(type='submit' name='submit')
+
+    section.alliances-and-partners
+      h1 Accelerate Your Development
+      div.animated-divider
+        img(src='assets/something-animatable.jpg')
+      p 
+      | Together, we can do so much more. That's why we're so excited about our alliances with leading technology initiatives dedicated to improving the in-car experience. Honda is a founding member of the 
+      a(href='') Open Automotive Alliance
+      |  (OAA) and will be among the first to roll out Android Auto-equipped vehicles. We're also an exclusive partner with Apple CarPlay
+      div.animated-divider
+        img(src='assets/something-animatable.jpg')
+      div.partner-logos
+        img(src='')
+        img(src='')
+        img(src='')
+        img(src='')
+        img(src='')
+
+    section.test-vehicles
+      header
+        img(src='')
+        img(src='')
+        img(src='')
+        img(src='')
+      h1 Where the Rubber Hits the Code
+      p Honda Silicon Valley Labs (HSVL) is offering exclusive access to its high-end test vehicles to select developers so you can experience real-time results and vehicle feedback as you build. Request access below to get into the driver's seat.
+      div.interactive-information
+        section.left
+          img(src='')
+          span HSVL Developer Studio Vehicle
+        section.right
+          img(src='')
+          span android auto Demo Vehicle
+      div.button
+        span Request Vehicle
+
+    section.vehicle-request
+      h1 Get Into the Drivers Seat
+
+    section.twitter
+
+    footer
+      div.logos
+        img(src='')
+        img(src='')
+        img(src='')
+      div.legal
+        p.copytight Copyright 2014 Honda Developer Studio. All Rights Reserved.
+        p.links Privacy Policy | Terms of Service | Honda | HSVL
