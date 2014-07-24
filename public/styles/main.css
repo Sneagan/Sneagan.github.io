@@ -1,4 +1,315 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
 body {
-  width: 100%; }
-  body > header, body > section {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: "InterLight";
+  src: url("../assets/fonts/InterLight.otf") format("opentype");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
+body {
+  font-family: "InterLight", sans-serif; }
+  body h1 {
+    font-size: 50px;
+    text-align: center;
+    text-transform: uppercase; }
+  body > section {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 150px; }
+  body > section.hero {
+    padding-top: 0px; }
+  body a, body a:hover, body a:visited {
+    color: #ed2435;
+    text-decoration: none; }
+  body .snippet {
+    line-height: 1.5;
+    font-size: 25px;
+    text-align: center;
+    font-style: italic; }
+  body .animated-divider {
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto; }
+
+header {
+  position: fixed;
+  background-color: #ffffff;
+  height: 75px;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0px 5px 25px -10px #000000; }
+  header > ul {
+    display: inline-block;
+    float: left;
+    margin-left: 45%;
+    height: 50px;
+    width: 50%;
+    padding-top: 25px; }
+    header > ul > li {
+      text-transform: uppercase;
+      display: inline-block;
+      text-align: center;
+      width: 25%;
+      float: left;
+      font-size: 20px; }
+      header > ul > li > a {
+        display: block;
+        color: #000000;
+        text-decoration: none; }
+        header > ul > li > a:hover, header > ul > li > a:visited {
+          color: #000000;
+          text-decoration: none; }
+
+.hero {
+  width: 100%;
+  height: 800px; }
+  .hero div .text {
+    margin-left: 75px;
+    padding-top: 100px;
+    width: 35%; }
+    .hero div .text .small {
+      color: #000000;
+      font-size: 25px;
+      margin-bottom: 20px; }
+    .hero div .text .large {
+      color: #ffffff;
+      font-size: 35px; }
+  .hero .hero-one {
+    background-image: url("../assets/images/banner.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0px -150px, center;
+    background-clip: border-box;
+    box-shadow: inset 0 -10px 10px -10px #000000;
+    height: 800px;
     width: 100%; }
+
+.sign-up {
+  width: 100%;
+  background-color: #eef1f1;
+  padding-top: 0px;
+  height: 800px; }
+  .sign-up .content-wrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto; }
+    .sign-up .content-wrapper h1 {
+      text-align: left;
+      width: 50%;
+      float: left;
+      padding-top: 50px;
+      padding-bottom: 50px; }
+    .sign-up .content-wrapper p {
+      width: 50%;
+      float: right;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      line-height: 1.5;
+      font-size: 20px; }
+    .sign-up .content-wrapper form {
+      margin-top: 100px;
+      height: 700px; }
+      .sign-up .content-wrapper form input {
+        width: 100%;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 30px;
+        font-size: 20px;
+        border: 1px #ededed solid; }
+        .sign-up .content-wrapper form input[type=checkbox] {
+          width: 20px;
+          height: 15px;
+          display: inline-block; }
+        .sign-up .content-wrapper form input[type=submit] {
+          width: 150px;
+          height: 50px;
+          color: #ffffff;
+          float: right;
+          text-transform: uppercase;
+          background-color: #ed2435;
+          border-top-left-radius: 10px;
+          border-bottom-right-radius: 10px; }
+      .sign-up .content-wrapper form span {
+        display: block; }
+      .sign-up .content-wrapper form label {
+        width: 100%; }
+        .sign-up .content-wrapper form label.platform {
+          display: inline;
+          margin-top: -20px; }
+      .sign-up .content-wrapper form textarea {
+        resize: none;
+        font-size: 20px;
+        width: 100%;
+        height: 100px;
+        border: 1px #ededed solid;
+        padding: 5px;
+        margin-top: 5px;
+        margin-bottom: 10px; }
+      .sign-up .content-wrapper form .left {
+        display: block;
+        width: 50%;
+        float: left; }
+      .sign-up .content-wrapper form .right {
+        display: block;
+        width: 45%;
+        float: right; }
+    .sign-up .content-wrapper .fine-print {
+      width: 50%;
+      float: left;
+      color: grey; }
+    .sign-up .content-wrapper .required-text {
+      float: right;
+      color: red; }
+
+.driving-mode-animation {
+  width: 100%;
+  height: 500px;
+  background-image: url("../assets/images/dash.jpg"); }
+  .driving-mode-animation .phone {
+    width: 235px;
+    height: 405px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px -5px #000;
+    margin-left: 20%;
+    margin-top: 100px;
+    padding-top: 30px; }
+    .driving-mode-animation .phone .screen {
+      height: 250px;
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 25px;
+      padding-top: 75px;
+      background-color: #000000; }
+      .driving-mode-animation .phone .screen .app-icon {
+        height: 100px;
+        width: 100px;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+        background-color: #ef3243; }
+      .driving-mode-animation .phone .screen span {
+        display: block;
+        font-size: 20px;
+        text-transform: uppercase;
+        width: 100%;
+        color: #ef3243;
+        text-align: center; }
+    .driving-mode-animation .phone .home-button {
+      height: 25px;
+      width: 50px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 20px;
+      border: 2px #ef3243 solid; }
+
+.vehicle-request {
+  width: 100%;
+  background-color: #eef1f1;
+  padding-top: 0px;
+  height: 800px; }
+  .vehicle-request .content-wrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto; }
+    .vehicle-request .content-wrapper h1 {
+      text-align: left;
+      width: 50%;
+      float: left;
+      padding-top: 50px;
+      padding-bottom: 50px; }
+    .vehicle-request .content-wrapper p {
+      width: 50%;
+      float: right;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      line-height: 1.5;
+      font-size: 20px; }
+    .vehicle-request .content-wrapper form {
+      margin-top: 100px;
+      height: 700px; }
+      .vehicle-request .content-wrapper form input {
+        width: 100%;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 30px;
+        font-size: 20px;
+        border: 1px #ededed solid; }
+        .vehicle-request .content-wrapper form input[type=checkbox] {
+          width: 20px;
+          height: 15px;
+          display: inline-block; }
+        .vehicle-request .content-wrapper form input[type=submit] {
+          width: 150px;
+          height: 50px;
+          color: #ffffff;
+          float: right;
+          text-transform: uppercase;
+          background-color: #ed2435;
+          border-top-left-radius: 10px;
+          border-bottom-right-radius: 10px; }
+      .vehicle-request .content-wrapper form span {
+        display: block; }
+      .vehicle-request .content-wrapper form label {
+        width: 100%; }
+        .vehicle-request .content-wrapper form label.platform {
+          display: inline;
+          margin-top: -20px; }
+      .vehicle-request .content-wrapper form textarea {
+        resize: none;
+        font-size: 20px;
+        width: 100%;
+        height: 100px;
+        border: 1px #ededed solid;
+        padding: 5px;
+        margin-top: 5px;
+        margin-bottom: 10px; }
+      .vehicle-request .content-wrapper form .left {
+        display: block;
+        width: 50%;
+        float: left; }
+      .vehicle-request .content-wrapper form .right {
+        display: block;
+        width: 45%;
+        float: right; }
+    .vehicle-request .content-wrapper .fine-print {
+      width: 50%;
+      float: left;
+      color: grey; }
+    .vehicle-request .content-wrapper .required-text {
+      float: right;
+      color: red; }

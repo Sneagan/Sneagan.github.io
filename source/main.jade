@@ -3,102 +3,108 @@ html
   head
     title Honda Developer Studio
     meta(http-equiv='Content-type' content='text/html; charset=UTF-8')
+    link(rel='stylesheet', href='./styles/main.css')
     script(src='./js/honda_developer_studio.min.js')
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   body
     header
       ul
-        li.navigation About
-        li.navigation Sign Up
-        li.navigation Partners
-        li.navigation Test Vehicles
+        li.navigation 
+          a(src='#') About
+        li.navigation
+          a(src='#') Sign Up
+        li.navigation
+          a(src='#') Partners
+        li.navigation
+          a(src='#') Test Vehicles
 
     section.hero
       div.hero-one
         div.text
-          p Your Inspiration Meets Honda Innovation
-          p If you're ready to revolutionize the Honda driving experience you've come to the right place.
-        img(src='assets/image.jpg')
+          p.small Your Inspiration Meets Honda Innovation
+          p.large If you're ready to revolutionize the Honda driving experience you've come to the right place.
 
     section.about
       h1 About Honda Developer Studio
       div.animated-divider
-        img(src='assets/something-animatable.jpg')
-      p 
+        canvas(id="animation" width="200" height="50")
+      p.snippet 
         | The Honda Developer Studio launched in 2014 in partnership with 
         a(src='http://google.com') Honda Silicon Valley Labs
         |  (HSVL). This inaugural program is an initiative, resource center, and information portal for developers and entrepreneurs. We encourage you to sign up to keep tabs on the latest happenings with The Honda Developer Studio as we continue to expand.
       div.animated-divider
-        img(src='assets/something-animatable.jpg')
+        canvas(id="animation" width="200" height="50")
 
     section.sign-up
-      h1 Sign Up to Stay Updated
-      p This exciting initiative with independent developers, partners, and entrepreneurs is just getting started. Sign up now to stay up to date with the latest happenings, plus get first access to Honda developer news and releases.
+      div.content-wrapper
+        h1 Sign Up to Stay Updated
+        p This exciting initiative with independent developers, partners, and entrepreneurs is just getting started. Sign up now to stay up to date with the latest happenings, plus get first access to Honda developer news and releases.
+      
+        form(action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8' method='POST')
+          div.left
+            input(type='hidden' name='oid' value='00Di0000000ZD0f')
+            input(type='hidden' name='retURL' value='http://')
+
+            label(for='first_name') First Name*
+            input(id='first_name' maxlength='40' name='first_name' size='20' type='text')
+
+            label(for='last_name') Last Name*
+            input(id='last_name' maxlength='80' name='last_name' size='20' type='text')
+
+            label(for='email') Email*
+            input(id='email' maxlength='80' name='email' size='20' type='text')
+
+            label(for='company') Company*
+            input(id='company' maxlength='40' name='company' size='20' type='text')
+
+            label(for='city') City*
+            input(id='city' maxlength='40' name='city' size='20' type='text')
+
+            label(for='state') State/Province*
+            input(id='state' maxlength='20' name='state' size='20' type='text')
+
+          div.right
+            span.platform What platform do you use?
+            div.checkbox-container
+              input(id='android' name='android' type='checkbox' value='1')
+              label(for='android' class="platform") Android
+            div.checkbox-container
+              input(id='ios' name='ios' type='checkbox' value='1')
+              label(for='ios' class="platform") iOS
+            label(for='build') What do you want to build?
+            textarea(name="textarea")
+            label(for='comments') Additional Comments
+            textarea(name="textarea")
+
+            
+            input(type='submit' name='submit' value="Sign Up")
+
+        div.fine-print Completing this form will subscribe you to email updates and outreach from the Honda Developer Studio. You can unsubscribe at any time.
+        div.required-text *Required
     
-      form(action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8' method='POST')
-        input(type='hidden' name='oid' value='00Di0000000ZD0f')
-        input(type='hidden' name='retURL' value='http://')
-
-        label(for='first_name') First Name
-        input(id='first_name' maxlength='40' name='first_name' size='20' type='text')
-
-        label(for='last_name') Last Name
-        input(id='last_name' maxlength='80' name='last_name' size='20' type='text')
-
-        label(for='email') Email
-        input(id='email' maxlength='80' name='email' size='20' type='text')
-
-        label(for='company') Company
-        input(id='company' maxlength='40' name='company' size='20' type='text')
-
-        label(for='city') City
-        input(id='city' maxlength='40' name='city' size='20' type='text')
-
-        label(for='state') State/Province
-        input(id='state' maxlength='20' name='state' size='20' type='text')
-
-        label(for='emailOptOut') Email Opt Out
-        input(id='emailOptOut' name='emailOptOut' type='checkbox' value='1')
-
-        label(for='Campaign_ID') Campaign
-        select(id='Campaign_ID' name='Campaign_ID')
-          option(value='') --None--
-
-        label(for='lead_source') Lead Source
-        select(id='lead_source' name='lead_source')
-          option(value='') --None--
-          option(value='Advertisement') Advertisement
-          option(value='Employee Referral') Employee Referral
-          option(value='External Referral') External Referral
-          option(value='Partner') Partner
-          option(value='Public Relations') Public Relations
-          option(value='Seminar - Internal') Seminar - Internal
-          option(value='Seminar - Partner') Seminar - Partner
-          option(value='Trade Show') Trade Show
-          option(value='Web') Web
-          option(value='Word of mouth') Word of mouth
-          option(value='Other') Other
-          option(value='Phone Inquiry') Phone Inquiry
-          option(value='Partner Referral') Partner Referral
-          option(value='Purchased List') Purchased List
-        
-        input(type='submit' name='submit')  
-    
-    section.alliances-and-partners
+    section.development
       h1 Accelerate Your Development
       div.animated-divider
-        img(src='assets/something-animatable.jpg')
-      p 
-      | Together, we can do so much more. That's why we're so excited about our alliances with leading technology initiatives dedicated to improving the in-car experience. Honda is a founding member of the 
-      a(href='') Open Automotive Alliance
-      |  (OAA) and will be among the first to roll out Android Auto-equipped vehicles. We're also an exclusive partner with Apple CarPlay
+        canvas(id="animation" width="200" height="50")
+      p.snippet 
+        | Together, we can do so much more. That's why we're so excited about our alliances with leading technology initiatives dedicated to improving the in-car experience. Honda is a founding member of the 
+        a(href='') Open Automotive Alliance
+        |  (OAA) and will be among the first to roll out Android Auto-equipped vehicles. We're also an exclusive partner with Apple CarPlay
       div.animated-divider
-        img(src='assets/something-animatable.jpg')
+        canvas(id="animation" width="200" height="50")
       div.partner-logos
-        img(src='')
-        img(src='')
-        img(src='')
-        img(src='')
-        img(src='')
+        img(src='../assets/images/android-auto.png')
+        img(src='../assets/images/apple-carplay.png')
+        img(src='../assets/images/google-developer.png')
+        img(src='../assets/images/open-automotive-alliance.jpg')
+        img(src='../assets/images/apple-developer.png')
+
+    section.driving-mode-animation
+      div.phone
+        div.screen
+          div.app-icon
+          span Driving Mode
+        div.home-button
 
     section.test-vehicles
       header
@@ -107,7 +113,9 @@ html
         img(src='')
         img(src='')
       h1 Where the Rubber Hits the Code
-      p Honda Silicon Valley Labs (HSVL) is offering exclusive access to its high-end test vehicles to select developers so you can experience real-time results and vehicle feedback as you build. Request access below to get into the driver's seat.
+      div.animated-divider
+        canvas(id="animation" width="200" height="50")
+      p.snippet Honda Silicon Valley Labs (HSVL) is offering exclusive access to its high-end test vehicles to select developers so you can experience real-time results and vehicle feedback as you build. Request access below to get into the driver's seat.
       div.interactive-information
         section.left
           img(src='')
@@ -120,6 +128,47 @@ html
 
     section.vehicle-request
       h1 Get Into the Drivers Seat
+      div.content-wrapper
+        form(action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8' method='POST')
+            div.left
+              input(type='hidden' name='oid' value='00Di0000000ZD0f')
+              input(type='hidden' name='retURL' value='http://')
+
+              label(for='first_name') First Name*
+              input(id='first_name' maxlength='40' name='first_name' size='20' type='text')
+
+              label(for='last_name') Last Name*
+              input(id='last_name' maxlength='80' name='last_name' size='20' type='text')
+
+              label(for='email') Email*
+              input(id='email' maxlength='80' name='email' size='20' type='text')
+
+              label(for='company') Company*
+              input(id='company' maxlength='40' name='company' size='20' type='text')
+
+              label(for='city') City*
+              input(id='city' maxlength='40' name='city' size='20' type='text')
+
+              label(for='state') State/Province*
+              input(id='state' maxlength='20' name='state' size='20' type='text')
+
+            div.right
+              span.platform What platform do you use?
+              div.checkbox-container
+                input(id='android' name='android' type='checkbox' value='1')
+                label(for='android' class="platform") Android
+              div.checkbox-container
+                input(id='ios' name='ios' type='checkbox' value='1')
+                label(for='ios' class="platform") iOS
+              label(for='build') What do you want to build?
+              textarea(name="textarea")
+              label(for='comments') Additional Comments
+              textarea(name="textarea")
+
+              
+              input(type='submit' name='submit' value="Sign Up")
+          div.fine-print Completing this form will subscribe you to email updates and outreach from the Honda Developer Studio. You can unsubscribe at any time.
+          div.required-text *Required
 
     section.twitter
 
