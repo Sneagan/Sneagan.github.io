@@ -1,0 +1,30 @@
+.hero {
+  width: 100%;
+  height: 800px;
+  div {
+    .text {
+      margin-left: 75px;
+      padding-top: 100px;
+      width: 35%;
+      .small {
+        color: #000000;
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+      .large {
+        color: #ffffff;
+        font-size: 35px;
+      }
+    }
+  }
+  .hero-one {
+    background-image: url('../assets/images/banner.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0px -150px, center;
+    background-clip: border-box;
+    box-shadow: inset 0 -10px 10px -10px #000000;
+    height: 800px;
+    width: 100%;
+  }
+}

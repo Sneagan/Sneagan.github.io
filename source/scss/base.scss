@@ -1,0 +1,39 @@
+@import 'reset';
+
+@font-face {
+  font-family: "InterLight";
+  src: url("../assets/fonts/InterLight.otf") format("opentype"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+body {
+  font-family: "InterLight", sans-serif;
+  h1 {
+    font-size: 50px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  & > section {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 150px;
+  }
+  & > section.hero {
+    padding-top: 0px;
+  }
+  a, a:hover, a:visited {
+    color: #ed2435;
+    text-decoration: none;
+  }
+  .snippet {
+    line-height: 1.5;
+    font-size: 25px;
+    text-align: center;
+    font-style: italic
+  }
+  .animated-divider {
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -25,22 +25,43 @@ module.exports = function(grunt) {
     },
     watch: {
       options: {
-        dateFormat: function(time) {
-          grunt.log.writeln('The watch finished in ' + time + 'ms at' + (new Date()).toString());
-          grunt.log.writeln('Waiting for more changes...');
-        },
+        livereload: false
       },
-      scripts: {
-        files: 'source/**/*.js',
-        tasks: ['jshint', 'concat', 'uglify'],
+      scss: {
+        files: ['source/scss/**/*.scss'],
+        tasks: ['clean', 'sass', 'copy'],
+        options: {
+          interrupt: true
+        }
+      },
+      js: {
+        files: ['source/js/**/*.js'],
+        tasks: ['jshint', 'browserify'],
+        options: {
+          interrupt: true
+        }
+      },
+      jade: {
+        files: ['source/**/*.jade'],
+        tasks: ['jade'],
+        options: {
+          interrupt: true
+        }
+      },
+      copy: {
+        files: ['source/assets/**/*'],
+        tasks: ['copy'],
+        options: {
+          interrupt: true
+        }
       }
     },
     sass: {
       dist: {
         files: [{
           expand: true,
-          cwd: 'source/sass/',
-          src: ['*.scss'],
+          cwd: 'source/scss/',
+          src: ['main.scss'],
           dest: 'public/styles/',
           ext: '.css'
         }]
@@ -52,16 +73,16 @@ module.exports = function(grunt) {
           // includes files within path and its sub-directories
           {
             expand: true,
-            cwd: 'source/assets/',
+            cwd: './source/assets/',
             src: ['./**'],
-            dest: 'public/assets/'
+            dest: './public/assets/'
           }
         ]
       }
     },
     clean: {
       build: {
-        src: ['public/assets/**']
+        src: ['public/assets/**', 'public/styles/**']
       }
     },
     browserify: {
@@ -97,6 +118,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('test', ['jshint']);
-  grunt.registerTask('compile', ['jshint', 'browserify', 'uglify', 'sass', 'clean', 'copy', 'jade']);
+  grunt.registerTask('compile', ['jshint', 'browserify', 'uglify', 'clean', 'sass', 'copy', 'jade']);
 
 };
