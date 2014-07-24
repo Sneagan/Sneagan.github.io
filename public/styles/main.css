@@ -236,13 +236,34 @@ header {
       border-radius: 20px;
       border: 2px #ef3243 solid; }
 
+.interactive-information {
+  width: 89%;
+  height: 500px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: #eef1f1;
+  text-align: center; }
+  .interactive-information .left {
+    width: 50%;
+    height: 500px;
+    float: left;
+    background-color: #eef1f1; }
+  .interactive-information .right {
+    width: 49%;
+    height: 500px;
+    float: right;
+    background-color: #eef1f1; }
+
 .vehicle-request {
   width: 100%;
-  background-color: #eef1f1;
+  background-color: #ffffff;
   padding-top: 0px;
   height: 800px; }
   .vehicle-request .content-wrapper {
     width: 80%;
+    height: 600px;
     margin-left: auto;
     margin-right: auto; }
     .vehicle-request .content-wrapper h1 {
@@ -260,7 +281,7 @@ header {
       font-size: 20px; }
     .vehicle-request .content-wrapper form {
       margin-top: 100px;
-      height: 700px; }
+      height: 500px; }
       .vehicle-request .content-wrapper form input {
         width: 100%;
         padding: 5px;
@@ -268,13 +289,14 @@ header {
         margin-bottom: 10px;
         height: 30px;
         font-size: 20px;
-        border: 1px #ededed solid; }
+        border: 1px #ededed solid;
+        background-color: #eef1f1; }
         .vehicle-request .content-wrapper form input[type=checkbox] {
           width: 20px;
           height: 15px;
           display: inline-block; }
         .vehicle-request .content-wrapper form input[type=submit] {
-          width: 150px;
+          width: 200px;
           height: 50px;
           color: #ffffff;
           float: right;
@@ -297,7 +319,8 @@ header {
         border: 1px #ededed solid;
         padding: 5px;
         margin-top: 5px;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        background-color: #eef1f1; }
       .vehicle-request .content-wrapper form .left {
         display: block;
         width: 50%;
@@ -313,3 +336,22 @@ header {
     .vehicle-request .content-wrapper .required-text {
       float: right;
       color: red; }
+
+.twitter {
+  width: 100%;
+  height: 200px;
+  background-color: #ed2435; }
+
+footer {
+  height: 300px; }
+  footer .legal {
+    width: 100%; }
+    footer .legal .copyright {
+      width: 50%;
+      float: left;
+      padding-left: 50px; }
+    footer .legal .links {
+      width: 49%;
+      float: right;
+      text-align: right;
+      padding-right: 50px; }

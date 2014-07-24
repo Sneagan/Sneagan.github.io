@@ -107,24 +107,20 @@ html
         div.home-button
 
     section.test-vehicles
-      header
-        img(src='')
-        img(src='')
-        img(src='')
-        img(src='')
       h1 Where the Rubber Hits the Code
       div.animated-divider
         canvas(id="animation" width="200" height="50")
       p.snippet Honda Silicon Valley Labs (HSVL) is offering exclusive access to its high-end test vehicles to select developers so you can experience real-time results and vehicle feedback as you build. Request access below to get into the driver's seat.
-      div.interactive-information
-        section.left
-          img(src='')
-          span HSVL Developer Studio Vehicle
-        section.right
-          img(src='')
-          span android auto Demo Vehicle
-      div.button
-        span Request Vehicle
+    
+    section.interactive-information
+      section.left
+        img(src='')
+        canvas(class="animation" id="interactive-1" width="400" height="400")
+        span HSVL Developer Studio Vehicle
+      section.right
+        img(src='')
+        canvas(class="animation interactive" width="200" height="200")
+        span android auto Demo Vehicle
 
     section.vehicle-request
       h1 Get Into the Drivers Seat
@@ -166,7 +162,8 @@ html
               textarea(name="textarea")
 
               
-              input(type='submit' name='submit' value="Sign Up")
+              input(type='submit' name='submit' value="Request Vehicle")
+
           div.fine-print Completing this form will subscribe you to email updates and outreach from the Honda Developer Studio. You can unsubscribe at any time.
           div.required-text *Required
 
@@ -178,5 +175,5 @@ html
         img(src='')
         img(src='')
       div.legal
-        p.copytight Copyright 2014 Honda Developer Studio. All Rights Reserved.
+        p.copyright Copyright 2014 Honda Developer Studio. All Rights Reserved.
         p.links Privacy Policy | Terms of Service | Honda | HSVL

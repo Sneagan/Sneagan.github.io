@@ -36,7 +36,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['source/js/**/*.js'],
-        tasks: ['jshint', 'browserify'],
+        tasks: ['jshint', 'browserify', 'uglify'],
         options: {
           interrupt: true
         }
@@ -88,7 +88,7 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         files: {
-          'public/js/honda_developer_studio.js': ['source/js/**/*.js'],
+          'public/js/honda_developer_studio.js': ['source/js/**/MainView.js'],
         },
         options: {}
       }

@@ -1,0 +1,17 @@
+footer {
+  height: 300px;
+  .legal {
+    width: 100%;
+    .copyright {
+      width: 50%;
+      float: left;
+      padding-left: 50px;
+    }
+    .links {
+      width: 49%;
+      float: right;
+      text-align: right;
+      padding-right: 50px;
+    }
+  }
+}

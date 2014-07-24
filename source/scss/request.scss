@@ -1,10 +1,11 @@
 .vehicle-request {
   width: 100%;
-  background-color: #eef1f1;
+  background-color: #ffffff;
   padding-top: 0px;
   height: 800px;
   .content-wrapper {
     width: 80%;
+    height: 600px;
     margin-left: auto;
     margin-right: auto;
     h1 {
@@ -24,7 +25,7 @@
     }
     form {
       margin-top: 100px;
-      height: 700px;
+      height: 500px;
       input {
         width: 100%;
         padding: 5px;
@@ -33,13 +34,14 @@
         height: 30px;
         font-size: 20px;
         border: 1px #ededed solid;
+        background-color: #eef1f1;
         &[type=checkbox] {
           width: 20px;
           height: 15px;
           display: inline-block;
         }
         &[type=submit] {
-          width: 150px;
+          width: 200px;
           height: 50px;
           color: #ffffff;
           float: right;
@@ -68,6 +70,7 @@
         padding: 5px;
         margin-top: 5px;
         margin-bottom: 10px;
+        background-color: #eef1f1;
       }
       .left {
         display: block;

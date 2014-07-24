@@ -5,26 +5,26 @@ var DrawCircle = function(){};
 DrawCircle.prototype = new VisibilityDector();
 DrawCircle.prototype.constructor = DrawCircle;
 DrawCircle.prototype.init = function($el) {
-  this.$el = $el;
-  // In here we'll get the canvas dimensions and other
-  // characteristics that we'll need to use in drawing
+  this.dotted = $el.getContext("2d");
+};
+DrawCircle.prototype.animate = function() {
+  if (this.dotted) {
+    this.dotted.clearRect(0, 0, 400, 400);
+    // Move registration point to the center of the canvas
+    this.dotted.translate(400/2, 400/2);
+    // Rotate 1 degree
+    this.dotted.rotate(Math.PI / 720);
+    this.dotted.translate(-400/2, -400/2);
+    this.dotted.beginPath();
+    this.dotted.setLineDash([2,10]);
+    this.dotted.arc(200,200,150,0,2*Math.PI);
+    this.dotted.lineWidth = 10;
+    this.dotted.stroke();
+  }
 };
 
 module.exports = DrawCircle;
-},{"./VisibilityDetector":3}],2:[function(require,module,exports){
-var VisibilityDector = require('./VisibilityDetector');
-
-var DrawLine = function(){};
-DrawLine.prototype = new VisibilityDector();
-DrawLine.prototype.constructor = DrawLine;
-DrawLine.prototype.init = function($el) {
-  this.$el = $el;
-  // In here we'll get the canvas dimensions and other
-  // characteristics that we'll need to use in drawing
-};
-
-module.exports = DrawLine;
-},{"./VisibilityDetector":3}],3:[function(require,module,exports){
+},{"./VisibilityDetector":2}],2:[function(require,module,exports){
 var VisibilityDetector = function(){};
 VisibilityDetector.prototype.fireIfVisible = function(callback) {
   var self = this;
@@ -54,6 +54,13 @@ VisibilityDetector.prototype.isHidden = function(el) {
 };
 
 module.exports = VisibilityDetector;
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
+var DrawCircle = require('../constructors/DrawCircle');
 
-},{}]},{},[1,2,3,4]);
+window.onload = function() {
+  console.log('starting');
+  var this_Circle = new DrawCircle();
+  this_Circle.init(document.getElementById('interactive-1'));
+  setInterval(this_Circle.animate.bind(this_Circle), 20);
+};
+},{"../constructors/DrawCircle":1}]},{},[3]);
