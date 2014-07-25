@@ -8,6 +8,6 @@ window.onload = function() {
   circle_1.init(document.getElementById('circle-canvas-1'), document.getElementById('circle-canvas-2'), document.getElementById('circle-canvas-3'), document.getElementById('circle-canvas-4'));
   circle_2.init(document.getElementById('circle-canvas-5'), document.getElementById('circle-canvas-6'), document.getElementById('circle-canvas-7'), document.getElementById('circle-canvas-8'));
 
-  setInterval(circle_1.animate.bind(circle_1), 5);
-  setInterval(circle_2.animate.bind(circle_2), 5);
+  setInterval(circle_1.animate.bind(circle_1, 720, -360, 360, 360), 5);
+  setInterval(circle_2.animate.bind(circle_2, -720, 360, -360, -720), 5);
 };
