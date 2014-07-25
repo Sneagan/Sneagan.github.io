@@ -4,7 +4,7 @@ html
     title Honda Developer Studio
     meta(http-equiv='Content-type' content='text/html; charset=UTF-8')
     link(rel='stylesheet', href='./styles/main.css')
-    script(src='./js/honda_developer_studio.min.js')
+    script(src='./js/honda_developer_studio.js')
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   body
     header
@@ -114,12 +114,18 @@ html
     
     section.interactive-information
       section.left
-        img(src='')
-        canvas(class="animation" id="interactive-1" width="400" height="400")
+        div(class="animation" id="interactive-1")
+          canvas(id="circle-canvas-1" class="circle-canvas" width="200" height="200")
+          canvas(id="circle-canvas-2" class="circle-canvas" width="200" height="200")
+          canvas(id="circle-canvas-3" class="circle-canvas" width="200" height="200")
+          canvas(id="circle-canvas-4" class="circle-canvas" width="200" height="200")
         span HSVL Developer Studio Vehicle
       section.right
-        img(src='')
-        canvas(class="animation interactive" width="200" height="200")
+        div(class="animation" id="interactive-1")
+          canvas(id="circle-canvas-5" class="circle-canvas" width="200" height="200")
+          canvas(id="circle-canvas-6" class="circle-canvas" width="200" height="200")
+          canvas(id="circle-canvas-7" class="circle-canvas" width="200" height="200")
+          canvas(id="circle-canvas-8" class="circle-canvas" width="200" height="200")
         span android auto Demo Vehicle
 
     section.vehicle-request

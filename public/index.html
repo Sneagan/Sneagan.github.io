@@ -4,7 +4,7 @@
     <title>Honda Developer Studio</title>
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="./styles/main.css">
-    <script src="./js/honda_developer_studio.min.js"></script><script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    <script src="./js/honda_developer_studio.js"></script><script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   </head>
   <body>
     <header>
@@ -101,11 +101,21 @@
       <p class="snippet">Honda Silicon Valley Labs (HSVL) is offering exclusive access to its high-end test vehicles to select developers so you can experience real-time results and vehicle feedback as you build. Request access below to get into the driver's seat.</p>
     </section>
     <section class="interactive-information">
-      <section class="left"><img src="">
-        <canvas id="interactive-1" width="400" height="400" class="animation"></canvas><span>HSVL Developer Studio Vehicle</span>
+      <section class="left">
+        <div id="interactive-1" class="animation">
+          <canvas id="circle-canvas-1" width="200" height="200" class="circle-canvas"></canvas>
+          <canvas id="circle-canvas-2" width="200" height="200" class="circle-canvas"></canvas>
+          <canvas id="circle-canvas-3" width="200" height="200" class="circle-canvas"></canvas>
+          <canvas id="circle-canvas-4" width="200" height="200" class="circle-canvas"></canvas>
+        </div><span>HSVL Developer Studio Vehicle</span>
       </section>
-      <section class="right"><img src="">
-        <canvas width="200" height="200" class="animation interactive"></canvas><span>android auto Demo Vehicle</span>
+      <section class="right">
+        <div id="interactive-1" class="animation">
+          <canvas id="circle-canvas-5" width="200" height="200" class="circle-canvas"></canvas>
+          <canvas id="circle-canvas-6" width="200" height="200" class="circle-canvas"></canvas>
+          <canvas id="circle-canvas-7" width="200" height="200" class="circle-canvas"></canvas>
+          <canvas id="circle-canvas-8" width="200" height="200" class="circle-canvas"></canvas>
+        </div><span>android auto Demo Vehicle</span>
       </section>
     </section>
     <section class="vehicle-request">

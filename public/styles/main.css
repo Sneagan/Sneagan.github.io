@@ -250,11 +250,25 @@ header {
     height: 500px;
     float: left;
     background-color: #eef1f1; }
+    .interactive-information .left .animation {
+      height: 400px;
+      width: 400px; }
+      .interactive-information .left .animation .circle-canvas {
+        position: absolute;
+        height: 200px;
+        width: 200px; }
   .interactive-information .right {
     width: 49%;
     height: 500px;
     float: right;
     background-color: #eef1f1; }
+    .interactive-information .right .animation {
+      height: 400px;
+      width: 400px; }
+      .interactive-information .right .animation .circle-canvas {
+        position: absolute;
+        height: 200px;
+        width: 200px; }
 
 .vehicle-request {
   width: 100%;

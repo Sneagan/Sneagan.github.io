@@ -12,11 +12,29 @@
     height: 500px;
     float: left;
     background-color: #eef1f1;
+    .animation {
+      height: 400px;
+      width: 400px;
+      .circle-canvas {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+      }
+    }
   }
   .right {
     width: 49%;
     height: 500px;
     float: right;
     background-color: #eef1f1;
+    .animation {
+      height: 400px;
+      width: 400px;
+      .circle-canvas {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+      }
+    }
   }
 }
