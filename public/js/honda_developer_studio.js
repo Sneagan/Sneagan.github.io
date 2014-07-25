@@ -1,5 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var VisibilityDetector = require('./VisibilityDetector');
+
 var Spinner = function(){};
+Spinner.prototype = new VisibilityDetector();
+Spinner.prototype.constructor = Spinner;
 Spinner.prototype.init = function($el, size) {
   // Save the containing element
   this.$container = $el;
@@ -65,79 +69,93 @@ Spinner.prototype.animate = function(deg1, deg2, deg3, deg4) {
 Spinner.prototype.stopAnimating = function() {
   window.clearInterval(this.animationInterval);
 };
-Spinner.prototype.transform = function(deg1, deg2, deg3, deg4) {
+Spinner.prototype.strokeSpoke = function(spoke, $spoke, params) {
+  var ctx = ($spoke.width/2);
+  var cty = ($spoke.height/2);
   var ratio = this.ratio;
+  spoke.clearRect(0, 0, $spoke.width, $spoke.height);
+  spoke.translate(ctx, cty);
+  spoke.rotate(Math.PI / params.rotation_divisor*ratio);
+  spoke.translate(-ctx, -cty);
+  spoke.beginPath();
+  if (params.dotted) spoke.setLineDash([2*ratio,6.6*ratio]);
+  spoke.arc(200*ratio,200*ratio,params.radius*ratio,params.start_deg,2*Math.PI);
+  spoke.lineWidth = params.width*ratio;
+  spoke.strokeStyle = '#ed2435';
+  spoke.stroke();
+};
+Spinner.prototype.transform = function(deg1, deg2, deg3, deg4) {
   if (this.dotted) {
-    var dotted = this.dotted;
-    var $dotted = this.$dotted;
-    var ctx1 = ($dotted.width/2);
-    var cty1 = ($dotted.height/2);
-
-    dotted.clearRect(0, 0, $dotted.width, $dotted.height);
-    dotted.translate(ctx1, cty1);
-    dotted.rotate(Math.PI / deg1*ratio);
-    dotted.translate(-ctx1, -cty1);
-    dotted.beginPath();
-    dotted.setLineDash([2*ratio,6.6*ratio]);
-    dotted.arc(200*ratio,200*ratio,115*ratio,0,2*Math.PI);
-    dotted.lineWidth = 7*ratio;
-    dotted.strokeStyle = '#ed2435';
-    dotted.stroke();
+    var params = {
+      radius: 115,
+      width: 7,
+      rotation_divisor: deg1,
+      dotted: true,
+      start_deg: 0
+    };
+    this.strokeSpoke(this.dotted, this.$dotted, params);
   }
   if (this.fat_seg) {
-    var fat_seg = this.fat_seg;
-    var $fat_seg = this.$fat_seg;
-    var ctx2 = ($fat_seg.width/2);
-    var cty2 = ($fat_seg.height/2);
-
-    fat_seg.clearRect(0, 0, $fat_seg.width, $fat_seg.height);
-    fat_seg.translate(ctx2, cty2);
-    fat_seg.rotate(Math.PI / deg2*ratio);
-    fat_seg.translate(-ctx2, -cty2);
-    fat_seg.beginPath();
-    fat_seg.arc(200*ratio,200*ratio,100*ratio,180,2*Math.PI);
-    fat_seg.lineWidth = 15*ratio;
-    fat_seg.strokeStyle = '#ed2435';
-    fat_seg.stroke();
+    var fat_params = {
+      radius: 100,
+      width: 15,
+      rotation_divisor: deg2,
+      start_deg: 180
+    };
+    this.strokeSpoke(this.fat_seg, this.$fat_seg, fat_params);
   }
-
   if (this.thin_long_seg) {
-    var thin_long_seg = this.thin_long_seg;
-    var $thin_long_seg = this.$thin_long_seg;
-    var ctx3 = ($thin_long_seg.width/2);
-    var cty3 = ($thin_long_seg.height/2);
-
-    thin_long_seg.clearRect(0, 0, $thin_long_seg.width, $thin_long_seg.height);
-    thin_long_seg.translate(ctx3, cty3);
-    thin_long_seg.rotate(Math.PI / deg3*ratio);
-    thin_long_seg.translate(-ctx3, -cty3);
-    thin_long_seg.beginPath();
-    thin_long_seg.arc(200*ratio,200*ratio,125*ratio,360,2*Math.PI);
-    thin_long_seg.lineWidth = 5*ratio;
-    thin_long_seg.strokeStyle = '#ed2435';
-    thin_long_seg.stroke();
+    var thin_params = {
+      radius: 125,
+      width: 5,
+      rotation_divisor: deg3,
+      start_deg: 360
+    };
+    this.strokeSpoke(this.thin_long_seg, this.$thin_long_seg, thin_params);
   }
-
   if (this.thin_short_seg) {
-    var thin_short_seg = this.thin_short_seg;
-    var $thin_short_seg = this.$thin_short_seg;
-    var ctx4 = ($thin_short_seg.width/2);
-    var cty4 = ($thin_short_seg.height/2);
-
-    thin_short_seg.clearRect(0, 0, $thin_short_seg.width, $thin_short_seg.height);
-    thin_short_seg.translate(ctx4, cty4);
-    thin_short_seg.rotate(Math.PI / deg4*ratio);
-    thin_short_seg.translate(-ctx4, -cty4);
-    thin_short_seg.beginPath();
-    thin_short_seg.arc(200*ratio,200*ratio,100*ratio,350,2*Math.PI);
-    thin_short_seg.lineWidth = 5*ratio;
-    thin_short_seg.strokeStyle = '#ed2435';
-    thin_short_seg.stroke();
+    var long_params = {
+      radius: 100,
+      width: 5,
+      rotation_divisor: deg4,
+      start_deg: 350
+    };
+    this.strokeSpoke(this.thin_short_seg, this.$thin_short_seg, long_params);
   }
 };
 
 module.exports = Spinner;
-},{}],2:[function(require,module,exports){
+},{"./VisibilityDetector":2}],2:[function(require,module,exports){
+var VisibilityDetector = function(){};
+VisibilityDetector.prototype.fireIfVisible = function(callback) {
+  var self = this;
+  return (function () {
+    if (self.isInViewport()) {
+      if (!self.iteration_began) {
+        // Only trigger the callback once.
+        self.iteration_began = true;
+        callback();
+      }
+    } else {
+      self.iteration_began = false;
+    }
+  })();
+};
+VisibilityDetector.prototype.isInViewport = function() {
+  var rect = this.elem.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* $(window).height() */
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* $(window).width() */
+  );
+};
+VisibilityDetector.prototype.isHidden = function(el) {
+  return (el.offsetParent === null);
+};
+
+module.exports = VisibilityDetector;
+},{}],3:[function(require,module,exports){
 var Spinner = require('../constructors/Spinner');
 
 
@@ -152,4 +170,4 @@ window.onload = function() {
   circle_2.init(document.getElementById('interactive-2'), 400);
   circle_2.animate(-720, 360, -360, -720);
 };
-},{"../constructors/Spinner":1}]},{},[2]);
+},{"../constructors/Spinner":1}]},{},[3]);
