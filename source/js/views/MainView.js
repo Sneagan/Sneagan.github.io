@@ -1,23 +1,14 @@
-var DrawCircle = require('../constructors/DrawCircle');
+var Spinner = require('../constructors/Spinner');
+
 
 window.onload = function() {
   console.log('starting');
-  var circle_1 = new DrawCircle();
-  var circle_2 = new DrawCircle();
+  var circle_1 = new Spinner();
+  var circle_2 = new Spinner();
 
-  circle_1.init([
-    document.getElementById('circle-canvas-1'),
-    document.getElementById('circle-canvas-2'),
-    document.getElementById('circle-canvas-3'),
-    document.getElementById('circle-canvas-4')
-  ]);
-  circle_2.init([
-    document.getElementById('circle-canvas-5'),
-    document.getElementById('circle-canvas-6'),
-    document.getElementById('circle-canvas-7'),
-    document.getElementById('circle-canvas-8')
-  ]);
+  circle_1.init(document.getElementById('interactive-1'), 400);
+  circle_1.animate(720, -360, 360, 360);
 
-  setInterval(circle_1.animate.bind(circle_1, 720, -360, 360, 360), 16.6);
-  setInterval(circle_2.animate.bind(circle_2, -720, 360, -360, -720), 16.6);
+  circle_2.init(document.getElementById('interactive-2'), 400);
+  circle_2.animate(-720, 360, -360, -720);
 };

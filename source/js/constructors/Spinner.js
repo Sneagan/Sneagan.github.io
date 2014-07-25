@@ -1,4 +1,3 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Spinner = function(){};
 Spinner.prototype.init = function($el, size) {
   // Save the containing element
@@ -135,19 +134,3 @@ Spinner.prototype.transform = function(deg1, deg2, deg3, deg4) {
 };
 
 module.exports = Spinner;
-},{}],2:[function(require,module,exports){
-var Spinner = require('../constructors/Spinner');
-
-
-window.onload = function() {
-  console.log('starting');
-  var circle_1 = new Spinner();
-  var circle_2 = new Spinner();
-
-  circle_1.init(document.getElementById('interactive-1'), 400);
-  circle_1.animate(720, -360, 360, 360);
-
-  circle_2.init(document.getElementById('interactive-2'), 400);
-  circle_2.animate(-720, 360, -360, -720);
-};
-},{"../constructors/Spinner":1}]},{},[2]);

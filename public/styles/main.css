@@ -253,7 +253,7 @@ header {
     .interactive-information .left .animation {
       height: 400px;
       width: 400px; }
-      .interactive-information .left .animation .circle-canvas {
+      .interactive-information .left .animation canvas {
         position: absolute; }
   .interactive-information .right {
     width: 49%;
@@ -263,7 +263,7 @@ header {
     .interactive-information .right .animation {
       height: 400px;
       width: 400px; }
-      .interactive-information .right .animation .circle-canvas {
+      .interactive-information .right .animation canvas {
         position: absolute; }
 
 .vehicle-request {
