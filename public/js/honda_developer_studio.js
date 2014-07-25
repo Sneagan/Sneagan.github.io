@@ -3,7 +3,9 @@ var Spinner = function(){};
 Spinner.prototype.init = function($el, size) {
   // Save the containing element
   this.$container = $el;
-  // Generate the canvases required by the Spinner
+  /* Generate the canvases required by the Spinner.
+   Note that the size is perceptive, as compensateForHighDPI()
+   could change the 'actual' size; */
   var $dotted_canvas = document.createElement('canvas');
   $dotted_canvas.height = size;
   $dotted_canvas.width = size;
@@ -26,7 +28,7 @@ Spinner.prototype.init = function($el, size) {
   this.compensateForHighDPI($fat_seg_canvas);
   this.compensateForHighDPI($thin_long_seg_canvas);
   this.compensateForHighDPI($thin_short_seg_canvas);
-  // Store these elements
+  // Store these elements now that they're ready.
   this.$dotted = $dotted_canvas;
   this.$fat_seg = $fat_seg_canvas;
   this.$thin_long_seg = $thin_long_seg_canvas;
