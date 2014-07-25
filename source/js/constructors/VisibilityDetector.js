@@ -2,28 +2,40 @@ var VisibilityDetector = function(){};
 VisibilityDetector.prototype.fireIfVisible = function(callback) {
   var self = this;
   return (function () {
-    if (self.isInViewport()) {
-      if (!self.iteration_began) {
+    if (self.isFullyInViewport() || self.isPartiallyInViewport()) {
+      if (!self.is_in_viewport) {
         // Only trigger the callback once.
-        self.iteration_began = true;
+        self.is_in_viewport = true;
         callback();
       }
     } else {
-      self.iteration_began = false;
+      self.is_in_viewport = false;
+      if (self.is_animating) self.stopAnimating();
     }
   })();
 };
-VisibilityDetector.prototype.isInViewport = function() {
-  var rect = this.elem.getBoundingClientRect();
+VisibilityDetector.prototype.isFullyInViewport = function($el) {
+  var rect = this.$container.getBoundingClientRect();
   return (
+    !this.isHidden(this.$container) &&
     rect.top >= 0 &&
     rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* $(window).height() */
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* $(window).width() */
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && // $(window).height()
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) // $(window).width()
   );
 };
-VisibilityDetector.prototype.isHidden = function(el) {
-  return (el.offsetParent === null);
+VisibilityDetector.prototype.isPartiallyInViewport = function($el) {
+  var rect = this.$container.getBoundingClientRect();
+  return (
+    !this.isHidden(this.$container) &&
+    rect.top + this.$container.offsetHeight >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom - this.$container.offsetHeight <= (window.innerHeight || document.documentElement.clientHeight) && // $(window).height()
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) // $(window).width()
+  );
+};
+VisibilityDetector.prototype.isHidden = function($el) {
+  return ($el.offsetParent === null);
 };
 
 module.exports = VisibilityDetector;

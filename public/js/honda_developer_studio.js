@@ -45,6 +45,9 @@ Spinner.prototype.init = function($el, size) {
   frag.appendChild(this.$thin_short_seg);
   this.$container.appendChild(frag);
 };
+Spinner.prototype.setAnimationDegrees = function(degrees_array) {
+  this.animation_degrees = degrees_array;
+};
 Spinner.prototype.compensateForHighDPI = function($el) {
   if (!this.ratio) {
     var dpr = window.devicePixelRatio || 1;
@@ -63,8 +66,13 @@ Spinner.prototype.compensateForHighDPI = function($el) {
   $el.style.width = oldWidth + 'px';
   $el.style.height = oldHeight + 'px';
 };
-Spinner.prototype.animate = function(deg1, deg2, deg3, deg4) {
-  this.animationInterval = setInterval(this.transform.bind(this, deg1, deg2, deg3, deg4), 16.6);
+Spinner.prototype.animate = function(degrees_array) {
+  var self = this;
+  if (degrees_array) this.setAnimationDegrees(degrees_array);
+  if (this.animation_degrees) {
+    this.animationInterval = setInterval(self.transform.bind(self), 16.6);
+    this.is_animating = true;
+  }
 };
 Spinner.prototype.stopAnimating = function() {
   window.clearInterval(this.animationInterval);
@@ -84,12 +92,13 @@ Spinner.prototype.strokeSpoke = function(spoke, $spoke, params) {
   spoke.strokeStyle = '#ed2435';
   spoke.stroke();
 };
-Spinner.prototype.transform = function(deg1, deg2, deg3, deg4) {
+Spinner.prototype.transform = function() {
+  if (!this.is_in_viewport) return;
   if (this.dotted) {
     var params = {
       radius: 115,
       width: 7,
-      rotation_divisor: deg1,
+      rotation_divisor: this.animation_degrees[0],
       dotted: true,
       start_deg: 0
     };
@@ -99,7 +108,7 @@ Spinner.prototype.transform = function(deg1, deg2, deg3, deg4) {
     var fat_params = {
       radius: 100,
       width: 15,
-      rotation_divisor: deg2,
+      rotation_divisor: this.animation_degrees[1],
       start_deg: 180
     };
     this.strokeSpoke(this.fat_seg, this.$fat_seg, fat_params);
@@ -108,7 +117,7 @@ Spinner.prototype.transform = function(deg1, deg2, deg3, deg4) {
     var thin_params = {
       radius: 125,
       width: 5,
-      rotation_divisor: deg3,
+      rotation_divisor: this.animation_degrees[2],
       start_deg: 360
     };
     this.strokeSpoke(this.thin_long_seg, this.$thin_long_seg, thin_params);
@@ -117,7 +126,7 @@ Spinner.prototype.transform = function(deg1, deg2, deg3, deg4) {
     var long_params = {
       radius: 100,
       width: 5,
-      rotation_divisor: deg4,
+      rotation_divisor: this.animation_degrees[3],
       start_deg: 350
     };
     this.strokeSpoke(this.thin_short_seg, this.$thin_short_seg, long_params);
@@ -130,44 +139,63 @@ var VisibilityDetector = function(){};
 VisibilityDetector.prototype.fireIfVisible = function(callback) {
   var self = this;
   return (function () {
-    if (self.isInViewport()) {
-      if (!self.iteration_began) {
+    if (self.isFullyInViewport() || self.isPartiallyInViewport()) {
+      if (!self.is_in_viewport) {
         // Only trigger the callback once.
-        self.iteration_began = true;
+        self.is_in_viewport = true;
         callback();
       }
     } else {
-      self.iteration_began = false;
+      self.is_in_viewport = false;
+      if (self.is_animating) self.stopAnimating();
     }
   })();
 };
-VisibilityDetector.prototype.isInViewport = function() {
-  var rect = this.elem.getBoundingClientRect();
+VisibilityDetector.prototype.isFullyInViewport = function($el) {
+  var rect = this.$container.getBoundingClientRect();
   return (
+    !this.isHidden(this.$container) &&
     rect.top >= 0 &&
     rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* $(window).height() */
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* $(window).width() */
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && // $(window).height()
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) // $(window).width()
   );
 };
-VisibilityDetector.prototype.isHidden = function(el) {
-  return (el.offsetParent === null);
+VisibilityDetector.prototype.isPartiallyInViewport = function($el) {
+  var rect = this.$container.getBoundingClientRect();
+  return (
+    !this.isHidden(this.$container) &&
+    rect.top + this.$container.offsetHeight >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom - this.$container.offsetHeight <= (window.innerHeight || document.documentElement.clientHeight) && // $(window).height()
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) // $(window).width()
+  );
+};
+VisibilityDetector.prototype.isHidden = function($el) {
+  return ($el.offsetParent === null);
 };
 
 module.exports = VisibilityDetector;
 },{}],3:[function(require,module,exports){
 var Spinner = require('../constructors/Spinner');
-
-
+var WatchForMe = [];
 window.onload = function() {
   console.log('starting');
   var circle_1 = new Spinner();
   var circle_2 = new Spinner();
 
   circle_1.init(document.getElementById('interactive-1'), 400);
-  circle_1.animate(720, -360, 360, 360);
-
   circle_2.init(document.getElementById('interactive-2'), 400);
-  circle_2.animate(-720, 360, -360, -720);
+  circle_1.setAnimationDegrees([720, -360, 360, 360]);
+  circle_2.setAnimationDegrees([-720, 360, -360, -720]);
+  
+  WatchForMe.push(circle_1);
+  WatchForMe.push(circle_2);
+};
+window.onscroll = function() {
+  for (var i = 0; i < WatchForMe.length; i++) {
+    var currentAnimation = WatchForMe[i];
+    currentAnimation.fireIfVisible(currentAnimation.animate.bind(currentAnimation));
+  }
 };
 },{"../constructors/Spinner":1}]},{},[3]);
