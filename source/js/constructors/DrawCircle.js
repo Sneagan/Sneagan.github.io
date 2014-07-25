@@ -20,6 +20,8 @@ DrawCircle.prototype.init = function($elems) {
                           $elems[0].msBackingStorePixelRatio ||
                           $elems[0].oBackingStorePixelRatio ||
                           $elems[0].backingStorePixelRatio || 1;
+  console.log('dpr:',dpr);
+  console.log('backingStoreRatio:',backingStoreRatio);
   var ratio = dpr/backingStoreRatio;
   this.ratio = ratio;
 

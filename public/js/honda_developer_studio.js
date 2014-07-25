@@ -21,6 +21,8 @@ DrawCircle.prototype.init = function($elems) {
                           $elems[0].msBackingStorePixelRatio ||
                           $elems[0].oBackingStorePixelRatio ||
                           $elems[0].backingStorePixelRatio || 1;
+  console.log('dpr:',dpr);
+  console.log('backingStoreRatio:',backingStoreRatio);
   var ratio = dpr/backingStoreRatio;
   this.ratio = ratio;
 
@@ -156,7 +158,7 @@ window.onload = function() {
     document.getElementById('circle-canvas-8')
   ]);
 
-  setInterval(circle_1.animate.bind(circle_1, 720, -360, 360, 360), 5);
-  setInterval(circle_2.animate.bind(circle_2, -720, 360, -360, -720), 5);
+  setInterval(circle_1.animate.bind(circle_1, 720, -360, 360, 360), 16.6);
+  setInterval(circle_2.animate.bind(circle_2, -720, 360, -360, -720), 16.6);
 };
 },{"../constructors/DrawCircle":1}]},{},[3]);
