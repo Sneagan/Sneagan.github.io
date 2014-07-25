@@ -254,9 +254,7 @@ header {
       height: 400px;
       width: 400px; }
       .interactive-information .left .animation .circle-canvas {
-        position: absolute;
-        height: 200px;
-        width: 200px; }
+        position: absolute; }
   .interactive-information .right {
     width: 49%;
     height: 500px;
@@ -266,9 +264,7 @@ header {
       height: 400px;
       width: 400px; }
       .interactive-information .right .animation .circle-canvas {
-        position: absolute;
-        height: 200px;
-        width: 200px; }
+        position: absolute; }
 
 .vehicle-request {
   width: 100%;
