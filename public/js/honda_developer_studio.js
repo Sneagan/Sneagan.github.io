@@ -22,6 +22,7 @@ Spinner.prototype.init = function($el, size) {
   var $thin_short_seg_canvas = document.createElement('canvas');
   $thin_short_seg_canvas.height = size;
   $thin_short_seg_canvas.width = size;
+
   // Get and save the 2d context of each canvas
   this.dotted = $dotted_canvas.getContext("2d");
   this.fat_seg = $fat_seg_canvas.getContext("2d");

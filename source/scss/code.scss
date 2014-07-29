@@ -5,32 +5,36 @@
   margin-bottom: 100px;
   padding-left: 5%;
   padding-right: 5%;
+  padding-top: 0px;
   background-color: #eef1f1;
   text-align: center;
-  .left {
+  .container {
+    float: left;
+    position: relative;
     width: 50%;
     height: 500px;
-    float: left;
-    background-color: #eef1f1;
     .animation {
       height: 400px;
-      width: 400px;
+      width: 100%;
+      position: absolute;
       canvas {
         position: absolute;
+        margin-left: -200px;
       }
     }
-  }
-  .right {
-    width: 49%;
-    height: 500px;
-    float: right;
-    background-color: #eef1f1;
-    .animation {
-      height: 400px;
-      width: 400px;
-      canvas {
-        position: absolute;
+    .tire-container {
+      height: 290px;
+      width: 100%;
+      margin-top: 110px;
+      position: absolute;
+      img {
+        width: 180px;
       }
+    }
+    p {
+      width: 100%;
+      text-align: center;
+      margin-top: 400px;
     }
   }
 }

@@ -60,6 +60,10 @@ body {
     width: 150px;
     margin-left: auto;
     margin-right: auto; }
+  body .group:after {
+    content: "";
+    display: table;
+    clear: both; }
 
 header {
   position: fixed;
@@ -243,28 +247,32 @@ header {
   margin-bottom: 100px;
   padding-left: 5%;
   padding-right: 5%;
+  padding-top: 0px;
   background-color: #eef1f1;
   text-align: center; }
-  .interactive-information .left {
-    width: 50%;
-    height: 500px;
+  .interactive-information .container {
     float: left;
-    background-color: #eef1f1; }
-    .interactive-information .left .animation {
+    position: relative;
+    width: 50%;
+    height: 500px; }
+    .interactive-information .container .animation {
       height: 400px;
-      width: 400px; }
-      .interactive-information .left .animation canvas {
-        position: absolute; }
-  .interactive-information .right {
-    width: 49%;
-    height: 500px;
-    float: right;
-    background-color: #eef1f1; }
-    .interactive-information .right .animation {
-      height: 400px;
-      width: 400px; }
-      .interactive-information .right .animation canvas {
-        position: absolute; }
+      width: 100%;
+      position: absolute; }
+      .interactive-information .container .animation canvas {
+        position: absolute;
+        margin-left: -200px; }
+    .interactive-information .container .tire-container {
+      height: 290px;
+      width: 100%;
+      margin-top: 110px;
+      position: absolute; }
+      .interactive-information .container .tire-container img {
+        width: 180px; }
+    .interactive-information .container p {
+      width: 100%;
+      text-align: center;
+      margin-top: 400px; }
 
 .vehicle-request {
   width: 100%;
