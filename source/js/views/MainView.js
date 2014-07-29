@@ -15,13 +15,16 @@ window.onload = function() {
   var spinner_1 = new Spinner();
   var spinner_2 = new Spinner();
 
-  spinner_1.init(document.getElementById('interactive-1'), 400);
-  spinner_2.init(document.getElementById('interactive-2'), 400);
+  spinner_1.init(document.getElementsByClassName('spinner')[0], 400);
+  spinner_2.init(document.getElementsByClassName('spinner')[1], 400);
   spinner_1.setAnimationDegrees([720, -360, 360, 360]);
   spinner_2.setAnimationDegrees([-720, 360, -360, -720]);
   
   WatchForMe.push(spinner_1);
   WatchForMe.push(spinner_2);
+
+  var divider_1 = new Divider();
+  divider_1.init(document.getElementsByClassName('animated-divider')[0]);
 
   animationHandler();
 };

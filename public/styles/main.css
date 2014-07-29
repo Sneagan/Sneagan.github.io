@@ -58,8 +58,11 @@ body {
     font-style: italic; }
   body .animated-divider {
     width: 150px;
+    height: 50px;
     margin-left: auto;
     margin-right: auto; }
+    body .animated-divider canvas {
+      position: absolute; }
   body .group:after {
     content: "";
     display: table;
@@ -255,11 +258,11 @@ header {
     position: relative;
     width: 50%;
     height: 500px; }
-    .interactive-information .container .animation {
+    .interactive-information .container .spinner {
       height: 400px;
       width: 100%;
       position: absolute; }
-      .interactive-information .container .animation canvas {
+      .interactive-information .container .spinner canvas {
         position: absolute;
         margin-left: -200px; }
     .interactive-information .container .tire-container {
