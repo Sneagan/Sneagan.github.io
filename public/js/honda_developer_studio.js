@@ -1,4 +1,17 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var VisibilityDector = require('./VisibilityDetector');
+
+var Divider = function(){};
+Divider.prototype = new VisibilityDector();
+Divider.prototype.constructor = Divider;
+Divider.prototype.init = function($el) {
+  this.$el = $el;
+  // In here we'll get the canvas dimensions and other
+  // characteristics that we'll need to use in drawing
+};
+
+module.exports = Divider;
+},{"./VisibilityDetector":3}],2:[function(require,module,exports){
 var VisibilityDetector = require('./VisibilityDetector');
 
 var Spinner = function(){};
@@ -135,7 +148,7 @@ Spinner.prototype.transform = function() {
 };
 
 module.exports = Spinner;
-},{"./VisibilityDetector":2}],2:[function(require,module,exports){
+},{"./VisibilityDetector":3}],3:[function(require,module,exports){
 var VisibilityDetector = function(){};
 VisibilityDetector.prototype.fireIfVisible = function(callback) {
   var self = this;
@@ -177,26 +190,36 @@ VisibilityDetector.prototype.isHidden = function($el) {
 };
 
 module.exports = VisibilityDetector;
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 var Spinner = require('../constructors/Spinner');
-var WatchForMe = [];
-window.onload = function() {
-  console.log('starting');
-  var circle_1 = new Spinner();
-  var circle_2 = new Spinner();
+var Divider = require('../constructors/Divider');
 
-  circle_1.init(document.getElementById('interactive-1'), 400);
-  circle_2.init(document.getElementById('interactive-2'), 400);
-  circle_1.setAnimationDegrees([720, -360, 360, 360]);
-  circle_2.setAnimationDegrees([-720, 360, -360, -720]);
-  
-  WatchForMe.push(circle_1);
-  WatchForMe.push(circle_2);
-};
-window.onscroll = function() {
+var WatchForMe = [];
+
+function animationHandler() {
   for (var i = 0; i < WatchForMe.length; i++) {
     var currentAnimation = WatchForMe[i];
     currentAnimation.fireIfVisible(currentAnimation.animate.bind(currentAnimation));
   }
+}
+
+window.onload = function() {
+  console.log('starting');
+  var spinner_1 = new Spinner();
+  var spinner_2 = new Spinner();
+
+  spinner_1.init(document.getElementById('interactive-1'), 400);
+  spinner_2.init(document.getElementById('interactive-2'), 400);
+  spinner_1.setAnimationDegrees([720, -360, 360, 360]);
+  spinner_2.setAnimationDegrees([-720, 360, -360, -720]);
+  
+  WatchForMe.push(spinner_1);
+  WatchForMe.push(spinner_2);
+
+  animationHandler();
 };
-},{"../constructors/Spinner":1}]},{},[3]);
+
+window.onscroll = function() {
+  animationHandler();
+};
+},{"../constructors/Divider":1,"../constructors/Spinner":2}]},{},[4]);
