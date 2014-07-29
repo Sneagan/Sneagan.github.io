@@ -1,8 +1,34 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var VisibilityDector = require('./VisibilityDetector');
 
+var Canvas = function(){};
+Canvas.prototype = new VisibilityDector();
+Canvas.prototype.constructor = Canvas;
+Canvas.prototype.compensateForHighDPI = function($el) {
+  if (!this.ratio) {
+    var dpr = window.devicePixelRatio || 1;
+    var backingStoreRatio = $el.webkitBackingStorePixelRatio ||
+                            $el.mozBackingStorePixelRatio ||
+                            $el.msBackingStorePixelRatio ||
+                            $el.oBackingStorePixelRatio ||
+                            $el.backingStorePixelRatio || 1;
+    var ratio = dpr/backingStoreRatio;
+    this.ratio = ratio;
+  }
+  var oldWidth = $el.width;
+  var oldHeight = $el.height;
+  $el.width = oldWidth * this.ratio;
+  $el.height = oldHeight * this.ratio;
+  $el.style.width = oldWidth + 'px';
+  $el.style.height = oldHeight + 'px';
+};
+
+module.exports = Canvas;
+},{"./VisibilityDetector":4}],2:[function(require,module,exports){
+var Canvas = require('./Canvas');
+
 var Divider = function(){};
-Divider.prototype = new VisibilityDector();
+Divider.prototype = new Canvas();
 Divider.prototype.constructor = Divider;
 Divider.prototype.init = function($el) {
   this.$container = $el;
@@ -12,29 +38,58 @@ Divider.prototype.init = function($el) {
   this.$thin_top_canvas = document.createElement('canvas');
   this.$thin_top_canvas.height = 50;
   this.$thin_top_canvas.width = 150;
-  
   this.$dotted_canvas = document.createElement('canvas');
   this.$dotted_canvas.height = 50;
   this.$dotted_canvas.width = 150;
-
   this.$thin_bottom_canvas = document.createElement('canvas');
   this.$thin_bottom_canvas.height = 50;
   this.$thin_bottom_canvas.width = 150;
 
+  // Get and save the 2d context of each canvas
+  this.thin_top = this.$thin_top_canvas.getContext("2d");
+  this.dotted = this.$dotted_canvas.getContext("2d");
+  this.thin_bottom = this.$thin_bottom_canvas.getContext("2d");
+
+  // Mutate each canvas as necessary for High DPI screens (Retina)
+  this.compensateForHighDPI(this.$thin_top_canvas);
+  this.compensateForHighDPI(this.$dotted_canvas);
+  this.compensateForHighDPI(this.$thin_bottom_canvas);
 
   var frag = document.createDocumentFragment();
   frag.appendChild(this.$thin_top_canvas);
   frag.appendChild(this.$dotted_canvas);
   frag.appendChild(this.$thin_bottom_canvas);
   this.$container.appendChild(frag);
+
+  this.draw();
+};
+Divider.prototype.draw = function() {
+  this.thin_top.moveTo(0, 5);
+  this.thin_top.lineTo(150, 5);
+  this.thin_top.lineWidth = 2;
+  this.thin_top.strokeStyle = '#ed2435';
+  this.thin_top.stroke();
+
+  this.dotted.moveTo(0, 25);
+  this.dotted.lineTo(150, 25);
+  this.dotted.lineWidth = 5;
+  this.dotted.setLineDash([20,5]);
+  this.dotted.strokeStyle = '#ed2435';
+  this.dotted.stroke();
+
+  this.thin_bottom.moveTo(0, 45);
+  this.thin_bottom.lineTo(150, 45);
+  this.thin_bottom.lineWidth = 2;
+  this.thin_bottom.strokeStyle = '#ed2435';
+  this.thin_bottom.stroke();
 };
 
 module.exports = Divider;
-},{"./VisibilityDetector":3}],2:[function(require,module,exports){
-var VisibilityDetector = require('./VisibilityDetector');
+},{"./Canvas":1}],3:[function(require,module,exports){
+var Canvas = require('./Canvas');
 
 var Spinner = function(){};
-Spinner.prototype = new VisibilityDetector();
+Spinner.prototype = new Canvas();
 Spinner.prototype.constructor = Spinner;
 Spinner.prototype.init = function($el, size) {
   // Save the containing element
@@ -80,24 +135,6 @@ Spinner.prototype.init = function($el, size) {
 };
 Spinner.prototype.setAnimationDegrees = function(degrees_array) {
   this.animation_degrees = degrees_array;
-};
-Spinner.prototype.compensateForHighDPI = function($el) {
-  if (!this.ratio) {
-    var dpr = window.devicePixelRatio || 1;
-    var backingStoreRatio = $el.webkitBackingStorePixelRatio ||
-                            $el.mozBackingStorePixelRatio ||
-                            $el.msBackingStorePixelRatio ||
-                            $el.oBackingStorePixelRatio ||
-                            $el.backingStorePixelRatio || 1;
-    var ratio = dpr/backingStoreRatio;
-    this.ratio = ratio;
-  }
-  var oldWidth = $el.width;
-  var oldHeight = $el.height;
-  $el.width = oldWidth * this.ratio;
-  $el.height = oldHeight * this.ratio;
-  $el.style.width = oldWidth + 'px';
-  $el.style.height = oldHeight + 'px';
 };
 Spinner.prototype.animate = function(degrees_array) {
   var self = this;
@@ -167,7 +204,7 @@ Spinner.prototype.transform = function() {
 };
 
 module.exports = Spinner;
-},{"./VisibilityDetector":3}],3:[function(require,module,exports){
+},{"./Canvas":1}],4:[function(require,module,exports){
 var VisibilityDetector = function(){};
 VisibilityDetector.prototype.fireIfVisible = function(callback) {
   var self = this;
@@ -209,7 +246,7 @@ VisibilityDetector.prototype.isHidden = function($el) {
 };
 
 module.exports = VisibilityDetector;
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var Spinner = require('../constructors/Spinner');
 var Divider = require('../constructors/Divider');
 
@@ -235,13 +272,15 @@ window.onload = function() {
   WatchForMe.push(spinner_1);
   WatchForMe.push(spinner_2);
 
-  var divider_1 = new Divider();
-  divider_1.init(document.getElementsByClassName('animated-divider')[0]);
-
+  var dividers = document.getElementsByClassName('animated-divider');
+  for (var i = 0; i < dividers.length; i++) {
+    var divider = new Divider();
+    divider.init(dividers[i]);
+  }
   animationHandler();
 };
 
 window.onscroll = function() {
   animationHandler();
 };
-},{"../constructors/Divider":1,"../constructors/Spinner":2}]},{},[4]);
+},{"../constructors/Divider":2,"../constructors/Spinner":3}]},{},[5]);

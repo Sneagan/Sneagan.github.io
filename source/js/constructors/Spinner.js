@@ -1,7 +1,7 @@
-var VisibilityDetector = require('./VisibilityDetector');
+var Canvas = require('./Canvas');
 
 var Spinner = function(){};
-Spinner.prototype = new VisibilityDetector();
+Spinner.prototype = new Canvas();
 Spinner.prototype.constructor = Spinner;
 Spinner.prototype.init = function($el, size) {
   // Save the containing element
@@ -47,24 +47,6 @@ Spinner.prototype.init = function($el, size) {
 };
 Spinner.prototype.setAnimationDegrees = function(degrees_array) {
   this.animation_degrees = degrees_array;
-};
-Spinner.prototype.compensateForHighDPI = function($el) {
-  if (!this.ratio) {
-    var dpr = window.devicePixelRatio || 1;
-    var backingStoreRatio = $el.webkitBackingStorePixelRatio ||
-                            $el.mozBackingStorePixelRatio ||
-                            $el.msBackingStorePixelRatio ||
-                            $el.oBackingStorePixelRatio ||
-                            $el.backingStorePixelRatio || 1;
-    var ratio = dpr/backingStoreRatio;
-    this.ratio = ratio;
-  }
-  var oldWidth = $el.width;
-  var oldHeight = $el.height;
-  $el.width = oldWidth * this.ratio;
-  $el.height = oldHeight * this.ratio;
-  $el.style.width = oldWidth + 'px';
-  $el.style.height = oldHeight + 'px';
 };
 Spinner.prototype.animate = function(degrees_array) {
   var self = this;

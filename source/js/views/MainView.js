@@ -23,9 +23,11 @@ window.onload = function() {
   WatchForMe.push(spinner_1);
   WatchForMe.push(spinner_2);
 
-  var divider_1 = new Divider();
-  divider_1.init(document.getElementsByClassName('animated-divider')[0]);
-
+  var dividers = document.getElementsByClassName('animated-divider');
+  for (var i = 0; i < dividers.length; i++) {
+    var divider = new Divider();
+    divider.init(dividers[i]);
+  }
   animationHandler();
 };
 
