@@ -1,7 +1,9 @@
 .driving-mode-animation {
   width: 100%;
   height: 500px;
-  background-image: url('../assets/images/dash.jpg');
+  background-image: url('../assets/images/road.jpg');
+  position: relative;
+  z-index: 5;
   .phone {
     width: 235px;
     height: 405px;
@@ -27,6 +29,9 @@
         margin-right: auto;
         margin-bottom: 15px;
         background-color: #ef3243;
+        img {
+          margin-top: 30px;
+        }
       }
       span {
         display: block;

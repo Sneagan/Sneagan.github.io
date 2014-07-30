@@ -8,6 +8,8 @@
   padding-top: 0px;
   background-color: #eef1f1;
   text-align: center;
+  position: relative;
+  z-index: 5;
   .container {
     float: left;
     position: relative;
@@ -29,6 +31,37 @@
       position: absolute;
       img {
         width: 180px;
+      }
+    }
+    .hover-details {
+      height: 200px;
+      width: 300px;
+      line-height: 1.5;
+      background-color: white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      color: red;
+      box-shadow: 0px 0px 10px #888888;
+      position: absolute;
+      margin-top: -500px;
+      margin-left: 350px;
+      padding: 20px;
+      text-align: left;
+      display: none;
+      div {
+        height: 200px;
+        width: 300px;
+      }
+      .bottomer {
+        background-color: red;
+        padding: 20px;
+        margin-top: 36px;
+        margin-left: -20px;
+        color: white;
+        text-align: left;
+      }
+      &.active {
+        display: block;
       }
     }
     p {

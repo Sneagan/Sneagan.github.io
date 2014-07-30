@@ -7,35 +7,42 @@ html
     script(src='./js/honda_developer_studio.js')
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   body
+    img(id='diagonal-lines' src='./assets/images/HondaWebsite_Lines.svg')
     header
+      img(src="./assets/images/HondaLogo.svg")
       ul
-        li.navigation 
-          a(src='#') About
         li.navigation
-          a(src='#') Sign Up
+          a(href='#about') About
         li.navigation
-          a(src='#') Partners
+          a(href='#sign-up') Sign Up
         li.navigation
-          a(src='#') Test Vehicles
+          a(href='#partners') Partners
+        li.navigation
+          a(href='#test-vehicles') Test Vehicles
 
     section.hero
-      div.hero-one
+      div.hero-one.active
+        div.text
+          p.small Your Inspiration Meets Honda Innovation
+          p.large If you're ready to revolutionize the Honda driving experience you've come to the right place.
+      div.hero-two
         div.text
           p.small Your Inspiration Meets Honda Innovation
           p.large If you're ready to revolutionize the Honda driving experience you've come to the right place.
 
-    section.about
-      h1 About Honda Developer Studio
-      div.animated-divider
-      p.snippet 
-        | The Honda Developer Studio launched in 2014 in partnership with 
-        a(src='http://google.com') Honda Silicon Valley Labs
-        |  (HSVL). This inaugural program is an initiative, resource center, and information portal for developers and entrepreneurs. We encourage you to sign up to keep tabs on the latest happenings with The Honda Developer Studio as we continue to expand.
-      div.animated-divider
+    section.about#about
+      div.content-wrapper
+        h1 About Honda Developer Studio
+        div.animated-divider
+        p.snippet 
+          | The Honda Developer Studio launched in 2014 in partnership with 
+          a(src='http://google.com') Honda Silicon Valley Labs
+          |  (HSVL). This inaugural program is an initiative, resource center, and information portal for developers and entrepreneurs. We encourage you to sign up to keep tabs on the latest happenings with The Honda Developer Studio as we continue to expand.
+        div.animated-divider
 
     section.sign-up
       div.content-wrapper
-        h1 Sign Up to Stay Updated
+        h1#sign-up Sign Up to Stay Updated
         p This exciting initiative with independent developers, partners, and entrepreneurs is just getting started. Sign up now to stay up to date with the latest happenings, plus get first access to Honda developer news and releases.
       
         form(action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8' method='POST')
@@ -80,7 +87,7 @@ html
         div.fine-print Completing this form will subscribe you to email updates and outreach from the Honda Developer Studio. You can unsubscribe at any time.
         div.required-text *Required
     
-    section.development
+    section.development#partners
       h1 Accelerate Your Development
       div.animated-divider
       p.snippet 
@@ -89,35 +96,42 @@ html
         |  (OAA) and will be among the first to roll out Android Auto-equipped vehicles. We're also an exclusive partner with Apple CarPlay
       div.animated-divider
       div.partner-logos
-        img(src='../assets/images/android-auto.png')
-        img(src='../assets/images/apple-carplay.png')
-        img(src='../assets/images/google-developer.png')
-        img(src='../assets/images/open-automotive-alliance.jpg')
-        img(src='../assets/images/apple-developer.png')
+        img(src='assets/images/android-auto.png')
+        img(src='assets/images/apple-carplay.png')
+        img(src='assets/images/google-developer.png')
+        img(src='assets/images/open-automotive-alliance.jpg')
+        img(src='assets/images/apple-developer.png')
 
     section.driving-mode-animation
       div.phone
         div.screen
           div.app-icon
+            img(src="assets/images/caricon.svg")
           span Driving Mode
         div.home-button
 
-    section.test-vehicles
+    section.test-vehicles#test-vehicles
       h1 Where the Rubber Hits the Code
       div.animated-divider
       p.snippet Honda Silicon Valley Labs (HSVL) is offering exclusive access to its high-end test vehicles to select developers so you can experience real-time results and vehicle feedback as you build. Request access below to get into the driver's seat.
     
     section.interactive-information
-      div.container
+      div.spinner-container.container
         div.tire-container
-          img(src="../assets/images/HSVLtestcar.png")
+          img(src="assets/images/HSVLtestcar.png")
         div(class="spinner group" id="interactive-1")
         p HSVL Developer Studio Vehicle
-      div.container
+        div.hover-details
+          div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lectus ligula, egestas id cursus ut, imperdiet vel est. Fusce metus elit, ornare sit amet sagittis tempus, dignissim dapibus diam.
+            p.bottomer HSVL
+      div.spinner-container.container
         div.tire-container
-          img(src="../assets/images/AAtestcar.png")
+          img(src="assets/images/AAtestcar.png")
         div(class="spinner group" id="interactive-2")
         p android auto Demo Vehicle
+        div.hover-details
+          div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lectus ligula, egestas id cursus ut, imperdiet vel est. Fusce metus elit, ornare sit amet sagittis tempus, dignissim dapibus diam.
+            p.bottomer android auto
 
     section.vehicle-request
       h1 Get Into the Drivers Seat
@@ -161,10 +175,8 @@ html
               
               input(type='submit' name='submit' value="Request Vehicle")
 
-          div.fine-print Completing this form will subscribe you to email updates and outreach from the Honda Developer Studio. You can unsubscribe at any time.
-          div.required-text *Required
-
-    section.twitter
+        div.fine-print Completing this form will subscribe you to email updates and outreach from the Honda Developer Studio. You can unsubscribe at any time
+        div.required-text *Required
 
     footer
       div.logos

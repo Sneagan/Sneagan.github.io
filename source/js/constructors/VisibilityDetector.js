@@ -14,6 +14,24 @@ VisibilityDetector.prototype.fireIfVisible = function(callback) {
     }
   })();
 };
+
+VisibilityDetector.prototype.fireIfFullyVisible = function(callback) {
+  var self = this;
+  console.log('running');
+  return (function () {
+    if (self.isFullyInViewport()) {
+      if (!self.is_in_viewport) {
+        // Only trigger the callback once.
+        self.is_in_viewport = true;
+        callback();
+      }
+    } else {
+      self.is_in_viewport = false;
+      if (self.is_animating) self.stopAnimating();
+    }
+  })();
+};
+
 VisibilityDetector.prototype.isFullyInViewport = function($el) {
   var rect = this.$container.getBoundingClientRect();
   return (

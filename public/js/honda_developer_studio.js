@@ -24,7 +24,7 @@ Canvas.prototype.compensateForHighDPI = function($el) {
 };
 
 module.exports = Canvas;
-},{"./VisibilityDetector":4}],2:[function(require,module,exports){
+},{"./VisibilityDetector":5}],2:[function(require,module,exports){
 var Canvas = require('./Canvas');
 
 var Divider = function(){};
@@ -40,52 +40,150 @@ Divider.prototype.init = function($el) {
   this.$thin_top_canvas.width = 150;
   this.$dotted_canvas = document.createElement('canvas');
   this.$dotted_canvas.height = 50;
-  this.$dotted_canvas.width = 150;
+  this.$dotted_canvas.width = 110;
   this.$thin_bottom_canvas = document.createElement('canvas');
   this.$thin_bottom_canvas.height = 50;
   this.$thin_bottom_canvas.width = 150;
+  this.$dot_1_canvas = document.createElement('canvas');
+  this.$dot_1_canvas.height = 50;
+  this.$dot_1_canvas.width = 150;
+  this.$dot_2_canvas = document.createElement('canvas');
+  this.$dot_2_canvas.height = 50;
+  this.$dot_2_canvas.width = 150;
+  this.$dot_3_canvas = document.createElement('canvas');
+  this.$dot_3_canvas.height = 50;
+  this.$dot_3_canvas.width = 150;
+  this.$dot_4_canvas = document.createElement('canvas');
+  this.$dot_4_canvas.height = 50;
+  this.$dot_4_canvas.width = 150;
+  this.$dot_5_canvas = document.createElement('canvas');
+  this.$dot_5_canvas.height = 50;
+  this.$dot_5_canvas.width = 150;
 
   // Get and save the 2d context of each canvas
   this.thin_top = this.$thin_top_canvas.getContext("2d");
   this.dotted = this.$dotted_canvas.getContext("2d");
   this.thin_bottom = this.$thin_bottom_canvas.getContext("2d");
+  this.dot_1 = this.$dot_1_canvas.getContext("2d");
+  this.dot_2 = this.$dot_2_canvas.getContext("2d");
+  this.dot_3 = this.$dot_3_canvas.getContext("2d");
+  this.dot_4 = this.$dot_4_canvas.getContext("2d");
+  this.dot_5 = this.$dot_5_canvas.getContext("2d");
 
   // Mutate each canvas as necessary for High DPI screens (Retina)
   this.compensateForHighDPI(this.$thin_top_canvas);
   this.compensateForHighDPI(this.$dotted_canvas);
   this.compensateForHighDPI(this.$thin_bottom_canvas);
+  this.compensateForHighDPI(this.$dot_1_canvas);
+  this.compensateForHighDPI(this.$dot_2_canvas);
+  this.compensateForHighDPI(this.$dot_3_canvas);
+  this.compensateForHighDPI(this.$dot_4_canvas);
+  this.compensateForHighDPI(this.$dot_5_canvas);
 
   var frag = document.createDocumentFragment();
   frag.appendChild(this.$thin_top_canvas);
   frag.appendChild(this.$dotted_canvas);
   frag.appendChild(this.$thin_bottom_canvas);
+  frag.appendChild(this.$dot_1_canvas);
+  frag.appendChild(this.$dot_2_canvas);
+  frag.appendChild(this.$dot_3_canvas);
+  frag.appendChild(this.$dot_4_canvas);
+  frag.appendChild(this.$dot_5_canvas);
   this.$container.appendChild(frag);
 
   this.draw();
 };
 Divider.prototype.draw = function() {
-  this.thin_top.moveTo(0, 5);
-  this.thin_top.lineTo(150, 5);
-  this.thin_top.lineWidth = 2;
+  var ratio = this.ratio;
+  this.thin_top.moveTo(0*ratio, 5*ratio);
+  this.thin_top.lineTo(100*ratio, 5*ratio);
+  this.thin_top.lineWidth = 2*ratio;
   this.thin_top.strokeStyle = '#ed2435';
   this.thin_top.stroke();
 
-  this.dotted.moveTo(0, 25);
-  this.dotted.lineTo(150, 25);
-  this.dotted.lineWidth = 5;
-  this.dotted.setLineDash([20,5]);
+  this.dotted.moveTo(0*ratio, 25*ratio);
+  this.dotted.lineTo(150*ratio, 25*ratio);
+  this.dotted.lineWidth = 5*ratio;
   this.dotted.strokeStyle = '#ed2435';
   this.dotted.stroke();
 
-  this.thin_bottom.moveTo(0, 45);
-  this.thin_bottom.lineTo(150, 45);
-  this.thin_bottom.lineWidth = 2;
+  this.dot_1.moveTo(30*ratio, 20*ratio);
+  this.dot_1.lineTo(15*ratio, 30*ratio);
+  this.dot_1.lineWidth = 5*ratio;
+  this.dot_1.strokeStyle = '#ffffff';
+  this.dot_1.stroke();
+  this.dot_2.moveTo(60*ratio, 20*ratio);
+  this.dot_2.lineTo(45*ratio, 30*ratio);
+  this.dot_2.lineWidth = 5*ratio;
+  this.dot_2.strokeStyle = '#ffffff';
+  this.dot_2.stroke();
+  this.dot_3.moveTo(90*ratio, 20*ratio);
+  this.dot_3.lineTo(75*ratio, 30*ratio);
+  this.dot_3.lineWidth = 5*ratio;
+  this.dot_3.strokeStyle = '#ffffff';
+  this.dot_3.stroke();
+  this.dot_4.moveTo(120*ratio, 20*ratio);
+  this.dot_4.lineTo(100*ratio, 30*ratio);
+  this.dot_4.lineWidth = 5*ratio;
+  this.dot_4.strokeStyle = '#ffffff';
+  this.dot_4.stroke();
+  this.dot_5.moveTo(150*ratio, 20*ratio);
+  this.dot_5.lineTo(130*ratio, 30*ratio);
+  this.dot_5.lineWidth = 5*ratio;
+  this.dot_5.strokeStyle = '#ffffff';
+  this.dot_5.stroke();
+
+  this.thin_bottom.moveTo(150*ratio, 45*ratio);
+  this.thin_bottom.lineTo(50*ratio, 45*ratio);
+  this.thin_bottom.lineWidth = 2*ratio;
   this.thin_bottom.strokeStyle = '#ed2435';
   this.thin_bottom.stroke();
+  this.temp_x = 150;
+};
+Divider.prototype.transform = function() {
+  
+};
+Divider.prototype.animate = function(degrees_array) {
+  var self = this;
+  this.animationInterval = setInterval(self.transform.bind(self), 16.6);
+  this.is_animating = true;
+};
+Divider.prototype.stopAnimating = function() {
+  window.clearInterval(this.animationInterval);
 };
 
 module.exports = Divider;
 },{"./Canvas":1}],3:[function(require,module,exports){
+var VisibilityDetector = require('./VisibilityDetector');
+
+var NavigationHighlighter = function(){};
+NavigationHighlighter.prototype = new VisibilityDetector();
+NavigationHighlighter.prototype.constructor = NavigationHighlighter;
+NavigationHighlighter.prototype.init = function($el, $button) {
+  this.$container = $el;
+  this.$button = $button;
+  this.$all_buttons = this.getSiblings($button);
+  this.$all_buttons.push($button);
+};
+NavigationHighlighter.prototype.getChildren = function(n, skipMe) {
+  var r = [];
+  var elem = null;
+  for ( ; n; n = n.nextSibling ) 
+    if ( n.nodeType == 1 && n != skipMe) r.push( n );        
+  return r;
+};
+NavigationHighlighter.prototype.getSiblings = function(n) {
+  return this.getChildren(n.parentNode.firstChild, n);
+};
+NavigationHighlighter.prototype.highlightNavButton = function() {
+  for (var i = 0; i < this.$all_buttons.length; i++) {
+    this.$all_buttons[i].classList.remove('active');
+  }
+  this.$button.classList.add('active');
+};
+
+module.exports = NavigationHighlighter;
+},{"./VisibilityDetector":5}],4:[function(require,module,exports){
 var Canvas = require('./Canvas');
 
 var Spinner = function(){};
@@ -204,7 +302,7 @@ Spinner.prototype.transform = function() {
 };
 
 module.exports = Spinner;
-},{"./Canvas":1}],4:[function(require,module,exports){
+},{"./Canvas":1}],5:[function(require,module,exports){
 var VisibilityDetector = function(){};
 VisibilityDetector.prototype.fireIfVisible = function(callback) {
   var self = this;
@@ -221,6 +319,24 @@ VisibilityDetector.prototype.fireIfVisible = function(callback) {
     }
   })();
 };
+
+VisibilityDetector.prototype.fireIfFullyVisible = function(callback) {
+  var self = this;
+  console.log('running');
+  return (function () {
+    if (self.isFullyInViewport()) {
+      if (!self.is_in_viewport) {
+        // Only trigger the callback once.
+        self.is_in_viewport = true;
+        callback();
+      }
+    } else {
+      self.is_in_viewport = false;
+      if (self.is_animating) self.stopAnimating();
+    }
+  })();
+};
+
 VisibilityDetector.prototype.isFullyInViewport = function($el) {
   var rect = this.$container.getBoundingClientRect();
   return (
@@ -246,16 +362,22 @@ VisibilityDetector.prototype.isHidden = function($el) {
 };
 
 module.exports = VisibilityDetector;
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var Spinner = require('../constructors/Spinner');
 var Divider = require('../constructors/Divider');
+var NavigationHighlighter = require('../constructors/NavigationHighlighter');
 
 var WatchForMe = [];
+var NavHighlighters = [];
 
 function animationHandler() {
   for (var i = 0; i < WatchForMe.length; i++) {
     var currentAnimation = WatchForMe[i];
     currentAnimation.fireIfVisible(currentAnimation.animate.bind(currentAnimation));
+  }
+  for (var n = 0; n < NavHighlighters.length; n++) {
+    var currentNav = NavHighlighters[n];
+    currentNav.fireIfFullyVisible(currentNav.highlightNavButton.bind(currentNav));
   }
 }
 
@@ -276,11 +398,43 @@ window.onload = function() {
   for (var i = 0; i < dividers.length; i++) {
     var divider = new Divider();
     divider.init(dividers[i]);
+    WatchForMe.push(divider);
   }
   animationHandler();
+
+  var aboutNavHighlighter = new NavigationHighlighter();
+  aboutNavHighlighter.init(document.getElementById('about'), document.getElementsByClassName('navigation')[0]);
+  var signupNavHighlighter = new NavigationHighlighter();
+  signupNavHighlighter.init(document.getElementById('sign-up'), document.getElementsByClassName('navigation')[1]);
+  var partnersNavHighlighter = new NavigationHighlighter();
+  partnersNavHighlighter.init(document.getElementById('partners'), document.getElementsByClassName('navigation')[2]);
+  var vehiclesNavHighlighter = new NavigationHighlighter();
+  vehiclesNavHighlighter.init(document.getElementById('test-vehicles'), document.getElementsByClassName('navigation')[3]);
+  NavHighlighters = [aboutNavHighlighter, signupNavHighlighter, partnersNavHighlighter, vehiclesNavHighlighter];
+
+  var hero1 = document.getElementsByClassName('hero-one')[0];
+  var hero2 = document.getElementsByClassName('hero-two')[0];
+  var heroTimer = setInterval(function() {
+    hero1.classList.toggle('active');
+    hero2.classList.toggle('active');
+  }, 10000);
+
+  document.getElementsByClassName('spinner-container')[0].onmouseover = function() {
+    document.getElementsByClassName('hover-details')[0].classList.add('active');
+  };
+  document.getElementsByClassName('spinner-container')[0].onmouseout = function() {
+    document.getElementsByClassName('hover-details')[0].classList.remove('active');
+  };
+  document.getElementsByClassName('spinner-container')[1].onmouseover = function() {
+    document.getElementsByClassName('hover-details')[1].classList.add('active');
+  };
+  document.getElementsByClassName('spinner-container')[1].onmouseout = function() {
+    document.getElementsByClassName('hover-details')[1].classList.remove('active');
+  };
+
 };
 
 window.onscroll = function() {
   animationHandler();
 };
-},{"../constructors/Divider":2,"../constructors/Spinner":3}]},{},[5]);
+},{"../constructors/Divider":2,"../constructors/NavigationHighlighter":3,"../constructors/Spinner":4}]},{},[6]);

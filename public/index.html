@@ -6,32 +6,40 @@
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./js/honda_developer_studio.js"></script><script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   </head>
-  <body>
-    <header>
+  <body><img id="diagonal-lines" src="./assets/images/HondaWebsite_Lines.svg">
+    <header><img src="./assets/images/HondaLogo.svg">
       <ul>
-        <li class="navigation"><a src="#">About</a></li>
-        <li class="navigation"><a src="#">Sign Up</a></li>
-        <li class="navigation"><a src="#">Partners</a></li>
-        <li class="navigation"><a src="#">Test Vehicles</a></li>
+        <li class="navigation"><a href="#about">About</a></li>
+        <li class="navigation"><a href="#sign-up">Sign Up</a></li>
+        <li class="navigation"><a href="#partners">Partners</a></li>
+        <li class="navigation"><a href="#test-vehicles">Test Vehicles</a></li>
       </ul>
     </header>
     <section class="hero">
-      <div class="hero-one">
+      <div class="hero-one active">
+        <div class="text">
+          <p class="small">Your Inspiration Meets Honda Innovation</p>
+          <p class="large">If you're ready to revolutionize the Honda driving experience you've come to the right place.</p>
+        </div>
+      </div>
+      <div class="hero-two">
         <div class="text">
           <p class="small">Your Inspiration Meets Honda Innovation</p>
           <p class="large">If you're ready to revolutionize the Honda driving experience you've come to the right place.</p>
         </div>
       </div>
     </section>
-    <section class="about">
-      <h1>About Honda Developer Studio</h1>
-      <div class="animated-divider"></div>
-      <p class="snippet">The Honda Developer Studio launched in 2014 in partnership with <a src="http://google.com">Honda Silicon Valley Labs</a> (HSVL). This inaugural program is an initiative, resource center, and information portal for developers and entrepreneurs. We encourage you to sign up to keep tabs on the latest happenings with The Honda Developer Studio as we continue to expand.</p>
-      <div class="animated-divider"></div>
+    <section id="about" class="about">
+      <div class="content-wrapper">
+        <h1>About Honda Developer Studio</h1>
+        <div class="animated-divider"></div>
+        <p class="snippet">The Honda Developer Studio launched in 2014 in partnership with <a src="http://google.com">Honda Silicon Valley Labs</a> (HSVL). This inaugural program is an initiative, resource center, and information portal for developers and entrepreneurs. We encourage you to sign up to keep tabs on the latest happenings with The Honda Developer Studio as we continue to expand.</p>
+        <div class="animated-divider"></div>
+      </div>
     </section>
     <section class="sign-up">
       <div class="content-wrapper">
-        <h1>Sign Up to Stay Updated</h1>
+        <h1 id="sign-up">Sign Up to Stay Updated</h1>
         <p>This exciting initiative with independent developers, partners, and entrepreneurs is just getting started. Sign up now to stay up to date with the latest happenings, plus get first access to Honda developer news and releases.</p>
         <form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
           <div class="left">
@@ -70,36 +78,46 @@
         <div class="required-text">*Required</div>
       </div>
     </section>
-    <section class="development">
+    <section id="partners" class="development">
       <h1>Accelerate Your Development</h1>
       <div class="animated-divider"></div>
       <p class="snippet">Together, we can do so much more. That's why we're so excited about our alliances with leading technology initiatives dedicated to improving the in-car experience. Honda is a founding member of the <a href="">Open Automotive Alliance</a> (OAA) and will be among the first to roll out Android Auto-equipped vehicles. We're also an exclusive partner with Apple CarPlay</p>
       <div class="animated-divider"></div>
-      <div class="partner-logos"><img src="../assets/images/android-auto.png"><img src="../assets/images/apple-carplay.png"><img src="../assets/images/google-developer.png"><img src="../assets/images/open-automotive-alliance.jpg"><img src="../assets/images/apple-developer.png"></div>
+      <div class="partner-logos"><img src="assets/images/android-auto.png"><img src="assets/images/apple-carplay.png"><img src="assets/images/google-developer.png"><img src="assets/images/open-automotive-alliance.jpg"><img src="assets/images/apple-developer.png"></div>
     </section>
     <section class="driving-mode-animation">
       <div class="phone">
         <div class="screen">
-          <div class="app-icon"></div><span>Driving Mode</span>
+          <div class="app-icon"><img src="assets/images/caricon.svg"></div><span>Driving Mode</span>
         </div>
         <div class="home-button"></div>
       </div>
     </section>
-    <section class="test-vehicles">
+    <section id="test-vehicles" class="test-vehicles">
       <h1>Where the Rubber Hits the Code</h1>
       <div class="animated-divider"></div>
       <p class="snippet">Honda Silicon Valley Labs (HSVL) is offering exclusive access to its high-end test vehicles to select developers so you can experience real-time results and vehicle feedback as you build. Request access below to get into the driver's seat.</p>
     </section>
     <section class="interactive-information">
-      <div class="container">
-        <div class="tire-container"><img src="../assets/images/HSVLtestcar.png"></div>
+      <div class="spinner-container container">
+        <div class="tire-container"><img src="assets/images/HSVLtestcar.png"></div>
         <div id="interactive-1" class="spinner group"></div>
         <p>HSVL Developer Studio Vehicle</p>
+        <div class="hover-details">
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lectus ligula, egestas id cursus ut, imperdiet vel est. Fusce metus elit, ornare sit amet sagittis tempus, dignissim dapibus diam.
+            <p class="bottomer">HSVL</p>
+          </div>
+        </div>
       </div>
-      <div class="container">
-        <div class="tire-container"><img src="../assets/images/AAtestcar.png"></div>
+      <div class="spinner-container container">
+        <div class="tire-container"><img src="assets/images/AAtestcar.png"></div>
         <div id="interactive-2" class="spinner group"></div>
         <p>android auto Demo Vehicle</p>
+        <div class="hover-details">
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lectus ligula, egestas id cursus ut, imperdiet vel est. Fusce metus elit, ornare sit amet sagittis tempus, dignissim dapibus diam.
+            <p class="bottomer">android auto</p>
+          </div>
+        </div>
       </div>
     </section>
     <section class="vehicle-request">
@@ -138,12 +156,10 @@
             <input type="submit" name="submit" value="Request Vehicle">
           </div>
         </form>
-        <div class="fine-print">Completing this form will subscribe you to email updates and outreach from the Honda Developer Studio. You can unsubscribe at any time.
-          <div class="required-text">*Required</div>
-        </div>
+        <div class="fine-print">Completing this form will subscribe you to email updates and outreach from the Honda Developer Studio. You can unsubscribe at any time</div>
+        <div class="required-text">*Required</div>
       </div>
     </section>
-    <section class="twitter"></section>
     <footer>
       <div class="logos"><img src=""><img src=""><img src=""></div>
       <div class="legal">

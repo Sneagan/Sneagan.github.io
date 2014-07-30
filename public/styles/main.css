@@ -36,7 +36,16 @@ table {
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
 
 body {
-  font-family: "InterLight", sans-serif; }
+  font-family: "InterLight", sans-serif;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto; }
+  body #diagonal-lines {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1; }
   body h1 {
     font-size: 50px;
     text-align: center;
@@ -59,6 +68,8 @@ body {
   body .animated-divider {
     width: 150px;
     height: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto; }
     body .animated-divider canvas {
@@ -73,22 +84,56 @@ header {
   background-color: #ffffff;
   height: 75px;
   width: 100%;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
   z-index: 100;
-  box-shadow: 0px 5px 25px -10px #000000; }
+  border-bottom: 3px solid #d7d7d7; }
+  header img {
+    width: 250px;
+    position: absolute;
+    top: -30px; }
   header > ul {
     display: inline-block;
     float: left;
     margin-left: 45%;
     height: 50px;
-    width: 50%;
+    width: 55%;
     padding-top: 25px; }
     header > ul > li {
       text-transform: uppercase;
       display: inline-block;
       text-align: center;
-      width: 25%;
       float: left;
-      font-size: 20px; }
+      font-size: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 30px;
+      margin-left: 20px;
+      margin-right: 20px; }
+      header > ul > li:hover {
+        border-bottom: 3px solid black; }
+      header > ul > li:nth-of-type(1) {
+        width: 100px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px; }
+      header > ul > li:nth-of-type(2) {
+        width: 100px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px; }
+      header > ul > li:nth-of-type(3) {
+        width: 110px; }
+      header > ul > li:nth-of-type(4) {
+        width: 160px;
+        padding-left: 10px;
+        margin-left: 10px; }
+      header > ul > li.active {
+        border-bottom: 3px solid red; }
       header > ul > li > a {
         display: block;
         color: #000000;
@@ -99,7 +144,9 @@ header {
 
 .hero {
   width: 100%;
-  height: 800px; }
+  height: 800px;
+  position: relative;
+  z-index: 5; }
   .hero div .text {
     margin-left: 75px;
     padding-top: 100px;
@@ -112,35 +159,74 @@ header {
       color: #ffffff;
       font-size: 35px; }
   .hero .hero-one {
+    transition: all 3s 2s linear;
     background-image: url("../assets/images/banner.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
-    background-position: 0px -150px, center;
+    background-position: 0px -50px, center;
     background-clip: border-box;
-    box-shadow: inset 0 -10px 10px -10px #000000;
     height: 800px;
-    width: 100%; }
+    width: 100%;
+    position: absolute;
+    opacity: 0; }
+    .hero .hero-one.active {
+      transition: all 3s 0s linear;
+      opacity: 1; }
+  .hero .hero-two {
+    transition: all 3s 2s linear;
+    background-image: url("../assets/images/banner-2.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0px -50px, center;
+    background-clip: border-box;
+    height: 800px;
+    width: 100%;
+    position: absolute;
+    opacity: 0; }
+    .hero .hero-two.active {
+      transition: all 3s 0s linear;
+      opacity: 1; }
+    .hero .hero-two .small {
+      color: red !important;
+      font-size: 25px;
+      margin-bottom: 20px; }
+
+.about {
+  background-color: #ffffff;
+  position: relative;
+  z-index: 5;
+  width: 100%; }
+  .about .content-wrapper {
+    padding-bottom: 150px;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 5; }
 
 .sign-up {
   width: 100%;
   background-color: #eef1f1;
+  height: 800px;
   padding-top: 0px;
-  height: 800px; }
+  position: relative;
+  z-index: 5; }
   .sign-up .content-wrapper {
     width: 80%;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    margin-top: -150px; }
     .sign-up .content-wrapper h1 {
       text-align: left;
       width: 50%;
       float: left;
-      padding-top: 50px;
+      margin-top: -50px;
+      padding-top: 100px;
       padding-bottom: 50px; }
     .sign-up .content-wrapper p {
       width: 50%;
       float: right;
       padding-top: 50px;
       padding-bottom: 50px;
+      margin-right: -50px;
       line-height: 1.5;
       font-size: 20px; }
     .sign-up .content-wrapper form {
@@ -196,13 +282,21 @@ header {
       float: left;
       color: grey; }
     .sign-up .content-wrapper .required-text {
-      float: right;
+      float: left;
+      margin-left: 50px;
       color: red; }
+
+.development {
+  background-color: #ffffff;
+  position: relative;
+  z-index: 5; }
 
 .driving-mode-animation {
   width: 100%;
   height: 500px;
-  background-image: url("../assets/images/dash.jpg"); }
+  background-image: url("../assets/images/road.jpg");
+  position: relative;
+  z-index: 5; }
   .driving-mode-animation .phone {
     width: 235px;
     height: 405px;
@@ -228,6 +322,8 @@ header {
         margin-right: auto;
         margin-bottom: 15px;
         background-color: #ef3243; }
+        .driving-mode-animation .phone .screen .app-icon img {
+          margin-top: 30px; }
       .driving-mode-animation .phone .screen span {
         display: block;
         font-size: 20px;
@@ -252,7 +348,9 @@ header {
   padding-right: 5%;
   padding-top: 0px;
   background-color: #eef1f1;
-  text-align: center; }
+  text-align: center;
+  position: relative;
+  z-index: 5; }
   .interactive-information .container {
     float: left;
     position: relative;
@@ -272,6 +370,33 @@ header {
       position: absolute; }
       .interactive-information .container .tire-container img {
         width: 180px; }
+    .interactive-information .container .hover-details {
+      height: 200px;
+      width: 300px;
+      line-height: 1.5;
+      background-color: white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      color: red;
+      box-shadow: 0px 0px 10px #888888;
+      position: absolute;
+      margin-top: -500px;
+      margin-left: 350px;
+      padding: 20px;
+      text-align: left;
+      display: none; }
+      .interactive-information .container .hover-details div {
+        height: 200px;
+        width: 300px; }
+      .interactive-information .container .hover-details .bottomer {
+        background-color: red;
+        padding: 20px;
+        margin-top: 36px;
+        margin-left: -20px;
+        color: white;
+        text-align: left; }
+      .interactive-information .container .hover-details.active {
+        display: block; }
     .interactive-information .container p {
       width: 100%;
       text-align: center;
@@ -281,7 +406,9 @@ header {
   width: 100%;
   background-color: #ffffff;
   padding-top: 0px;
-  height: 800px; }
+  height: 800px;
+  position: relative;
+  z-index: 5; }
   .vehicle-request .content-wrapper {
     width: 80%;
     height: 600px;
@@ -355,13 +482,9 @@ header {
       float: left;
       color: grey; }
     .vehicle-request .content-wrapper .required-text {
-      float: right;
+      float: left;
+      margin-left: 50px;
       color: red; }
-
-.twitter {
-  width: 100%;
-  height: 200px;
-  background-color: #ed2435; }
 
 footer {
   height: 300px; }

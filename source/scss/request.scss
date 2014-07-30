@@ -3,6 +3,8 @@
   background-color: #ffffff;
   padding-top: 0px;
   height: 800px;
+  position: relative;
+  z-index: 5;
   .content-wrapper {
     width: 80%;
     height: 600px;
@@ -89,7 +91,8 @@
       color: grey;
     }
     .required-text {
-      float: right;
+      float: left;
+      margin-left: 50px;
       color: red;
     }
   }

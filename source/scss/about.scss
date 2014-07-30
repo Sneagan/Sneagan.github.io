@@ -1,2 +1,12 @@
 .about {
+  background-color: #ffffff;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  .content-wrapper {
+    padding-bottom: 150px;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 5;
+  }
 }

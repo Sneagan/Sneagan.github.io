@@ -1,17 +1,21 @@
 .sign-up {
   width: 100%;
   background-color: #eef1f1;
-  padding-top: 0px;
   height: 800px;
+  padding-top: 0px;
+  position: relative;
+  z-index: 5;
   .content-wrapper {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -150px;
     h1 {
       text-align: left;
       width: 50%;
       float: left;
-      padding-top: 50px;
+      margin-top: -50px;
+      padding-top: 100px;
       padding-bottom: 50px;
     }
     p {
@@ -19,6 +23,7 @@
       float: right;
       padding-top: 50px;
       padding-bottom: 50px;
+      margin-right: -50px;
       line-height: 1.5;
       font-size: 20px;
     }
@@ -86,7 +91,8 @@
       color: grey;
     }
     .required-text {
-      float: right;
+      float: left;
+      margin-left: 50px;
       color: red;
     }
   }
